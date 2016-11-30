@@ -1,0 +1,8 @@
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\bin\Debug\ConsoleHost.exe.config
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\bin\Debug\ConsoleHost.exe
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\bin\Debug\ConsoleHost.pdb
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\bin\Debug\CalculatorServiceLibrary.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\bin\Debug\CalculatorServiceLibrary.pdb
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\obj\Debug\ConsoleHost.csprojResolveAssemblyReference.cache
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\obj\Debug\ConsoleHost.exe
+D:\Work\WCF\Task1\CalculatorServiceLibrary\ConsoleHost\obj\Debug\ConsoleHost.pdb

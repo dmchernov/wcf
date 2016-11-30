@@ -1,0 +1,5 @@
+D:\Work\WCF\Task1\CalculatorServiceLibrary\WcfServiceLibrary\bin\Debug\WcfServiceLibrary.dll.config
+D:\Work\WCF\Task1\CalculatorServiceLibrary\WcfServiceLibrary\bin\Debug\WcfServiceLibrary.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\WcfServiceLibrary\bin\Debug\WcfServiceLibrary.pdb
+D:\Work\WCF\Task1\CalculatorServiceLibrary\WcfServiceLibrary\obj\Debug\WcfServiceLibrary.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\WcfServiceLibrary\obj\Debug\WcfServiceLibrary.pdb

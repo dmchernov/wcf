@@ -1,0 +1,7 @@
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\TestClient.dll.config
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\TestClient.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\TestClient.pdb
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\obj\Debug\TestClient.dll
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\obj\Debug\TestClient.pdb

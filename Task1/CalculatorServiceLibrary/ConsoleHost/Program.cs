@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleHost
 {
@@ -14,12 +10,12 @@ namespace ConsoleHost
 			var host = new ServiceHost(typeof(CalculatorServiceLibrary.CalculatorService));
 
             host.Open();
-            Console.WriteLine("Service started");
+            Console.WriteLine("Http Service started");
 
             Console.ReadLine();
 
             host.Close();
-            Console.WriteLine("Service closed");
+            Console.WriteLine("Http Service closed");
         }
     }
 }

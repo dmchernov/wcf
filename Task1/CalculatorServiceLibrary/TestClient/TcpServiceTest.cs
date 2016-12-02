@@ -45,5 +45,15 @@ namespace TestClient
 				Assert.AreEqual(client.Div(10, 5), 2);
 			}
 		}
+
+		[TestMethod]
+		public void DivByZeroTest ()
+		{
+			using (var client = new TcpServiceReference.CalculatorServiceClient())
+			{
+				Console.WriteLine(client.Div(10, 5));
+				client.Div(10, 0);
+			}
+		}
 	}
 }

@@ -2,3 +2,4 @@ D:\Work\WCF\Task1\CalculatorServiceLibrary\CalculatorServiceLibrary\bin\Debug\Ca
 D:\Work\WCF\Task1\CalculatorServiceLibrary\CalculatorServiceLibrary\bin\Debug\CalculatorServiceLibrary.pdb
 D:\Work\WCF\Task1\CalculatorServiceLibrary\CalculatorServiceLibrary\obj\Debug\CalculatorServiceLibrary.dll
 D:\Work\WCF\Task1\CalculatorServiceLibrary\CalculatorServiceLibrary\obj\Debug\CalculatorServiceLibrary.pdb
+D:\Work\WCF\Task1\CalculatorServiceLibrary\CalculatorServiceLibrary\obj\Debug\CalculatorServiceLibrary.csprojResolveAssemblyReference.cache

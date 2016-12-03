@@ -5,3 +5,4 @@ D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\Microsoft.Visual
 D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\obj\Debug\TestClient.dll
 D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\obj\Debug\TestClient.pdb
+D:\Work\WCF\Task1\CalculatorServiceLibrary\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache

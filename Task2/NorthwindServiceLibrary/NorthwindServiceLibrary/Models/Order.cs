@@ -32,12 +32,13 @@ namespace NorthwindServiceLibrary.Models
         public string CustomerID { get; set; }
 		[IgnoreDataMember]
         public int? EmployeeID { get; set; }
+
 		[DataMember]
         public DateTime? OrderDate { get; set; }
 		[DataMember]
         public DateTime? RequiredDate { get; set; }
 		[DataMember]
-        public DateTime? ShippedDate { get; set; }
+        public DateTime? ShippedDate { get; }
 		[DataMember]
         public int? ShipVia { get; set; }
 

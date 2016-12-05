@@ -17,7 +17,7 @@ namespace NorthwindServiceLibrary.Models
         {
             Order_Details = new HashSet<Order_Detail>();
         }
-
+		[DataMember]
         public int ProductID { get; set; }
 
         [Required]
@@ -39,9 +39,9 @@ namespace NorthwindServiceLibrary.Models
         public short? UnitsInStock { get; set; }
 		[DataMember]
         public short? UnitsOnOrder { get; set; }
-
+		[DataMember]
         public short? ReorderLevel { get; set; }
-
+		[DataMember]
         public bool Discontinued { get; set; }
 		[DataMember]
         public virtual Category Category { get; set; }

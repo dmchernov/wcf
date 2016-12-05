@@ -16,6 +16,7 @@ namespace NorthwindServiceLibrary.Models
         }
 
         [StringLength(5)]
+		[DataMember]
         public string CustomerID { get; set; }
 
         [Required]

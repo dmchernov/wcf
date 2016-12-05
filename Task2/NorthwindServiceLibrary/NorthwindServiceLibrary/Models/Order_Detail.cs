@@ -13,11 +13,13 @@ namespace NorthwindServiceLibrary.Models
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+		[DataMember]
         public int OrderID { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+		[DataMember]
         public int ProductID { get; set; }
 
         [Column(TypeName = "money")]

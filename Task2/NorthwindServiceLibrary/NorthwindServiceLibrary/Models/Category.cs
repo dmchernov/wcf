@@ -14,7 +14,7 @@ namespace NorthwindServiceLibrary.Models
         {
             Products = new HashSet<Product>();
         }
-
+		[DataMember]
         public int CategoryID { get; set; }
 
         [Required]

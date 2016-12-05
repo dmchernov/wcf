@@ -14,16 +14,54 @@
   <wsdl:message name="INorthwindService_GetOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOrdersResponse" />
   </wsdl:message>
+  <wsdl:message name="INorthwindService_GetOrderEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderEx" />
+  </wsdl:message>
+  <wsdl:message name="INorthwindService_GetOrderEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderExResponse" />
+  </wsdl:message>
+  <wsdl:message name="INorthwindService_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="INorthwindService_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
   <wsdl:portType name="INorthwindService">
     <wsdl:operation name="GetOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/INorthwindService/GetOrders" message="tns:INorthwindService_GetOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INorthwindService/GetOrdersResponse" message="tns:INorthwindService_GetOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/INorthwindService/GetOrderEx" message="tns:INorthwindService_GetOrderEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INorthwindService/GetOrderExResponse" message="tns:INorthwindService_GetOrderEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/INorthwindService/Add" message="tns:INorthwindService_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INorthwindService/AddResponse" message="tns:INorthwindService_Add_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_INorthwindService" type="tns:INorthwindService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetOrders">
       <soap:operation soapAction="http://tempuri.org/INorthwindService/GetOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderEx">
+      <soap:operation soapAction="http://tempuri.org/INorthwindService/GetOrderEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/INorthwindService/Add" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

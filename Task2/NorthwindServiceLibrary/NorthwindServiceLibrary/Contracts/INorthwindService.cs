@@ -17,6 +17,12 @@ namespace NorthwindServiceLibrary.Contracts
 		// TODO: Добавьте здесь операции служб
 		[OperationContract]
 		IList<Order> GetOrders();
+
+		[OperationContract]
+		Order GetOrderEx(int orderId);
+
+		[OperationContract]
+		Order Add(Order newOrder);
 	}
 
 	// Используйте контракт данных, как показано на следующем примере, чтобы добавить сложные типы к сервисным операциям.

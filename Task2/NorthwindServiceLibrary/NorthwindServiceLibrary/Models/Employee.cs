@@ -16,7 +16,7 @@ namespace NorthwindServiceLibrary.Models
             Orders = new HashSet<Order>();
             Territories = new HashSet<Territory>();
         }
-
+		[DataMember]
         public int EmployeeID { get; set; }
 
         [Required]

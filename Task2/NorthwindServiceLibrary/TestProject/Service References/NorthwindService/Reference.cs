@@ -1031,25 +1031,25 @@ namespace TestProject.NorthwindService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NorthwindService.INorthwindService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://epam.com/dmitrii_chernov/northwind", ConfigurationName="NorthwindService.INorthwindService")]
     public interface INorthwindService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INorthwindService/GetOrders", ReplyAction="http://tempuri.org/INorthwindService/GetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrders", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrdersResponse")]
         TestProject.NorthwindService.Order[] GetOrders();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INorthwindService/GetOrders", ReplyAction="http://tempuri.org/INorthwindService/GetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrders", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrdersResponse")]
         System.Threading.Tasks.Task<TestProject.NorthwindService.Order[]> GetOrdersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INorthwindService/GetOrderEx", ReplyAction="http://tempuri.org/INorthwindService/GetOrderExResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderEx", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderExResponse")]
         TestProject.NorthwindService.Order GetOrderEx(int orderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INorthwindService/GetOrderEx", ReplyAction="http://tempuri.org/INorthwindService/GetOrderExResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderEx", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderExResponse")]
         System.Threading.Tasks.Task<TestProject.NorthwindService.Order> GetOrderExAsync(int orderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INorthwindService/Add", ReplyAction="http://tempuri.org/INorthwindService/AddResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/Add", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/AddResponse")]
         TestProject.NorthwindService.Order Add(TestProject.NorthwindService.Order newOrder);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INorthwindService/Add", ReplyAction="http://tempuri.org/INorthwindService/AddResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/Add", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/AddResponse")]
         System.Threading.Tasks.Task<TestProject.NorthwindService.Order> AddAsync(TestProject.NorthwindService.Order newOrder);
     }
     

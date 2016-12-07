@@ -70,19 +70,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\NorthwindService\item.xsd">
+    <None Include="Service References\NorthwindService\northwind.wsdl" />
+    <None Include="Service References\NorthwindService\northwind.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NorthwindService\item1.xsd">
+    <None Include="Service References\NorthwindService\NorthwindServiceLibrary.Enums.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NorthwindService\item2.xsd">
+    <None Include="Service References\NorthwindService\NorthwindServiceLibrary.Models.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NorthwindService\item3.xsd">
+    <None Include="Service References\NorthwindService\service.wsdl" />
+    <None Include="Service References\NorthwindService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NorthwindService\NorthwindService.wsdl" />
     <None Include="Service References\NorthwindService\TestProject.NorthwindService.Order.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -92,9 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\NorthwindService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\NorthwindService\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\NorthwindService\configuration91.svcinfo" />

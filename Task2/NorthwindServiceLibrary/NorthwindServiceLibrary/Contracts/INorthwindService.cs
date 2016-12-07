@@ -6,7 +6,7 @@ using NorthwindServiceLibrary.Models;
 namespace NorthwindServiceLibrary.Contracts
 {
 	// ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени интерфейса "IService1" в коде и файле конфигурации.
-	[ServiceContract]
+	[ServiceContract(Namespace = "http://epam.com/dmitrii_chernov/northwind")]
 	public interface INorthwindService
 	{
 		/*[OperationContract]
@@ -23,6 +23,8 @@ namespace NorthwindServiceLibrary.Contracts
 
 		[OperationContract]
 		Order Add(Order newOrder);
+		[OperationContract]
+		int TestContract();
 	}
 
 	// Используйте контракт данных, как показано на следующем примере, чтобы добавить сложные типы к сервисным операциям.

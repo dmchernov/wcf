@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindServiceLibrary.Models
 {
-	[Serializable]
+	//[Serializable]
 	[DataContract]
 	[KnownType(typeof(Status))]
 	[KnownType(typeof(Employee))]
@@ -28,9 +28,9 @@ namespace NorthwindServiceLibrary.Models
 		public int OrderID { get; set; }
 
         [StringLength(5)]
-		[IgnoreDataMember]
+		//[IgnoreDataMember]
         public string CustomerID { get; set; }
-		[IgnoreDataMember]
+		//[IgnoreDataMember]
         public int? EmployeeID { get; set; }
 
 		[DataMember]
@@ -38,7 +38,7 @@ namespace NorthwindServiceLibrary.Models
 		[DataMember]
         public DateTime? RequiredDate { get; set; }
 		[DataMember]
-        public DateTime? ShippedDate { get; }
+        public DateTime? ShippedDate { get; set; }
 		[DataMember]
         public int? ShipVia { get; set; }
 

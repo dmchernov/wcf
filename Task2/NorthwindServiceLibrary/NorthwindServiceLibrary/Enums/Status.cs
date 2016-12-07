@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 namespace NorthwindServiceLibrary.Enums
 {
 	[DataContract]
-	[Serializable]
 	public enum Status
 	{
 		[EnumMember]

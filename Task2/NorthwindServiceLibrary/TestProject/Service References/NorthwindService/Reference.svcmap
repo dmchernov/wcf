@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/NorthwindService/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/NorthwindService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2c2d1075-144d-4eb5-92e9-10ea260b5dd8" SourceId="1" SourceUrl="http://localhost/NorthwindService/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="6840f1fe-3dc6-4170-876a-a9c0824394ee" SourceId="1" SourceUrl="http://localhost/NorthwindService/?disco" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="1663e44e-069a-4058-8185-3accd0124237" SourceId="1" SourceUrl="http://localhost/NorthwindService/?xsd=xsd1" />
-    <MetadataFile FileName="NorthwindService.wsdl" MetadataType="Wsdl" ID="58554029-1b40-4171-a448-e58a7725ca99" SourceId="1" SourceUrl="http://localhost/NorthwindService/?wsdl" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ed7f1004-e823-4f0a-858b-a58bfd2ef45f" SourceId="1" SourceUrl="http://localhost/NorthwindService/?xsd=xsd2" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="02e8a77e-19d4-4a5d-8817-9423af590016" SourceId="1" SourceUrl="http://localhost/NorthwindService/?xsd=xsd3" />
+    <MetadataFile FileName="northwind.wsdl" MetadataType="Wsdl" ID="dd2bfc3f-980d-466b-8eb9-82a4ffe73dfb" SourceId="1" SourceUrl="http://localhost/NorthwindService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="d63a235b-a516-41fc-a261-3fd907688410" SourceId="1" SourceUrl="http://localhost/NorthwindService/mex" />
+    <MetadataFile FileName="northwind.xsd" MetadataType="Schema" ID="2e28dcd3-fcbf-4194-ac9a-10a8b0899c44" SourceId="1" SourceUrl="http://localhost/NorthwindService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="63ae2305-9a42-477f-85da-ea7e09e91e73" SourceId="1" SourceUrl="http://localhost/NorthwindService/mex" />
+    <MetadataFile FileName="NorthwindServiceLibrary.Models.xsd" MetadataType="Schema" ID="2469d8a4-14a9-4cd4-8cdd-489745bde9f1" SourceId="1" SourceUrl="http://localhost/NorthwindService/mex" />
+    <MetadataFile FileName="NorthwindServiceLibrary.Enums.xsd" MetadataType="Schema" ID="791797b6-209e-4e16-8fd7-a7f82de9dd70" SourceId="1" SourceUrl="http://localhost/NorthwindService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

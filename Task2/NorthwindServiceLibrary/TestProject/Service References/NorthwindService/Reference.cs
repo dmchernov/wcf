@@ -1051,6 +1051,12 @@ namespace TestProject.NorthwindService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/Add", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/AddResponse")]
         System.Threading.Tasks.Task<TestProject.NorthwindService.Order> AddAsync(TestProject.NorthwindService.Order newOrder);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContract", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContractResponse")]
+        int TestContract();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContract", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContractResponse")]
+        System.Threading.Tasks.Task<int> TestContractAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1102,6 +1108,14 @@ namespace TestProject.NorthwindService {
         
         public System.Threading.Tasks.Task<TestProject.NorthwindService.Order> AddAsync(TestProject.NorthwindService.Order newOrder) {
             return base.Channel.AddAsync(newOrder);
+        }
+        
+        public int TestContract() {
+            return base.Channel.TestContract();
+        }
+        
+        public System.Threading.Tasks.Task<int> TestContractAsync() {
+            return base.Channel.TestContractAsync();
         }
     }
 }

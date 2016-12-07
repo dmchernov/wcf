@@ -26,6 +26,12 @@
   <wsdl:message name="INorthwindService_Add_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddResponse" />
   </wsdl:message>
+  <wsdl:message name="INorthwindService_TestContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestContract" />
+  </wsdl:message>
+  <wsdl:message name="INorthwindService_TestContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestContractResponse" />
+  </wsdl:message>
   <wsdl:portType name="INorthwindService">
     <wsdl:operation name="GetOrders">
       <wsdl:input wsaw:Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrders" message="tns:INorthwindService_GetOrders_InputMessage" />
@@ -38,6 +44,10 @@
     <wsdl:operation name="Add">
       <wsdl:input wsaw:Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/Add" message="tns:INorthwindService_Add_InputMessage" />
       <wsdl:output wsaw:Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/AddResponse" message="tns:INorthwindService_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestContract">
+      <wsdl:input wsaw:Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContract" message="tns:INorthwindService_TestContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContractResponse" message="tns:INorthwindService_TestContract_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

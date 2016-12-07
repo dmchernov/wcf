@@ -44,7 +44,7 @@ namespace TestProject
 			var newOrder = new Order()
 			{
 				Customer = new Customer() { CompanyName = "Test", ContactName = "Contact", CustomerID = new Random().Next(1, 99999).ToString(), ContactTitle = "Title"},
-				Employee = new Employee() { FirstName = "EmpFirstName", LastName = "EmpLastName" },
+				Employee = new Employee() { FirstName = "FirstName", LastName = "EmpLastName" },
 				Shipper = new Shipper() { CompanyName = "Test Shipper", Phone = "123-456"},
 				ShipAddress = "Address",
 				ShipCity = "City",
@@ -55,6 +55,10 @@ namespace TestProject
 			Console.WriteLine(ord.OrderID);
 			Assert.AreEqual(ord.Customer.CompanyName, "Test");
 			Assert.AreEqual(ord.Customer.ContactName, "Contact");
+
+			Assert.AreEqual(ord.Employee.LastName, "EmpLastName");
+			Assert.AreEqual(ord.Employee.FirstName, "FirstName");
+
 			Assert.AreEqual(ord.Shipper.CompanyName, "Test Shipper");
 			Assert.AreEqual(ord.Shipper.Phone, "123-456");
 		}

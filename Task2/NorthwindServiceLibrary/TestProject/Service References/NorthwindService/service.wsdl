@@ -31,6 +31,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TestContract">
+      <soap:operation soapAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="NorthwindService">
     <wsdl:port name="BasicHttpBinding_INorthwindService" binding="tns:BasicHttpBinding_INorthwindService">

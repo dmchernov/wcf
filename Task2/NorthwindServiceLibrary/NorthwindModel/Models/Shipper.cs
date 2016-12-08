@@ -1,10 +1,9 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace NorthwindServiceLibrary.Models
+namespace NorthwindModel.Models
 {
-	using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
 	[DataContract]
     public partial class Shipper
     {

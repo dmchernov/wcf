@@ -1,8 +1,8 @@
-namespace NorthwindServiceLibrary.Models
-{
-	using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
+namespace NorthwindModel.Models
+{
 	public partial class Territory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

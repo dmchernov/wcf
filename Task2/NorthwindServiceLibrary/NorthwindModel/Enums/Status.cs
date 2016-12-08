@@ -1,7 +1,6 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
-namespace NorthwindServiceLibrary.Enums
+namespace NorthwindModel.Enums
 {
 	[DataContract]
 	public enum Status

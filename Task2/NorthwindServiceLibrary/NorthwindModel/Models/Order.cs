@@ -1,14 +1,13 @@
-using System.Runtime.Serialization;
-using NorthwindServiceLibrary.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using NorthwindModel.Enums;
+using NorthwindModel.Models.CustomModels;
 
-namespace NorthwindServiceLibrary.Models
+namespace NorthwindModel.Models
 {
-	//[Serializable]
 	[DataContract]
 	[KnownType(typeof(Status))]
 	[KnownType(typeof(Employee))]
@@ -16,7 +15,7 @@ namespace NorthwindServiceLibrary.Models
 	[KnownType(typeof(Shipper))]
 	[KnownType(typeof(Order))]
 	[KnownType(typeof(Order_Detail))]
-	public partial class Order
+	public class Order : BasicOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
@@ -24,8 +23,8 @@ namespace NorthwindServiceLibrary.Models
             Order_Details = new HashSet<Order_Detail>();
         }
 
-		[DataMember]
-		public int OrderID { get; set; }
+		/*[DataMember]
+		public int OrderID { get; set; }*/
 
         [StringLength(5)]
 		//[IgnoreDataMember]
@@ -33,12 +32,12 @@ namespace NorthwindServiceLibrary.Models
 		//[IgnoreDataMember]
         public int? EmployeeID { get; set; }
 
-		[DataMember]
-        public DateTime? OrderDate { get; set; }
+		/*[DataMember]
+        public DateTime? OrderDate { get; set; }*/
 		[DataMember]
         public DateTime? RequiredDate { get; set; }
-		[DataMember]
-        public DateTime? ShippedDate { get; set; }
+		/*[DataMember]
+        public DateTime? ShippedDate { get; set; }*/
 		[DataMember]
         public int? ShipVia { get; set; }
 
@@ -50,17 +49,17 @@ namespace NorthwindServiceLibrary.Models
 		[DataMember]
         public string ShipName { get; set; }
 
-        [StringLength(60)]
+        /*[StringLength(60)]
 		[DataMember]
-        public string ShipAddress { get; set; }
+        public string ShipAddress { get; set; }*/
 
-        [StringLength(15)]
+        /*[StringLength(15)]
 		[DataMember]
-        public string ShipCity { get; set; }
+        public string ShipCity { get; set; }*/
 
-        [StringLength(15)]
+        /*[StringLength(15)]
 		[DataMember]
-        public string ShipRegion { get; set; }
+        public string ShipRegion { get; set; }*/
 
         [StringLength(10)]
 		[DataMember]

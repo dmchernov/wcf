@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0ef67788-bce9-4712-a795-1f0345f66fc7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/OrderService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="aa42ff30-fe4d-455f-9d42-1547ba800e00" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="76a20dda-d2f6-448f-b41a-ca8d761f8ffb" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="fef06f50-040e-4e87-a6a1-e9567fbc6bf0" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="NorthwindModel.Models.CustomModels.xsd" MetadataType="Schema" ID="4109e92d-194f-44bf-af13-f7c9ffd9e7a2" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="NorthwindModel.Models.xsd" MetadataType="Schema" ID="04bd646c-78f6-46ae-a317-eea627e91ebe" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="NorthwindModel.Enums.xsd" MetadataType="Schema" ID="4c50ab8b-64f0-4800-a833-a4ce3e2edb09" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

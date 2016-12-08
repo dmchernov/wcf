@@ -1,10 +1,9 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace NorthwindServiceLibrary.Models
+namespace NorthwindModel.Models
 {
-	using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
 	[Table("Order Details")]
 	[DataContract]
 	[KnownType(typeof(Product))]

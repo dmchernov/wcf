@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://epam.com/dmitrii_chernov/northwind" elementFormDefault="qualified" targetNamespace="http://epam.com/dmitrii_chernov/northwind" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models" />
   <xs:element name="GetOrders">
@@ -42,15 +42,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TestContract">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TestContractResponse">
+  <xs:element name="SendOrderToProcess">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="TestContractResult" type="xs:int" />
+        <xs:element minOccurs="0" name="orderId" type="xs:int" />
+        <xs:element minOccurs="0" name="orderDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendOrderToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/NorthwindModel.Models" minOccurs="0" name="SendOrderToProcessResult" nillable="true" type="q5:Order" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendOrderToCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderId" type="xs:int" />
+        <xs:element minOccurs="0" name="shippedDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendOrderToCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/NorthwindModel.Models" minOccurs="0" name="SendOrderToCustomerResult" nillable="true" type="q6:Order" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

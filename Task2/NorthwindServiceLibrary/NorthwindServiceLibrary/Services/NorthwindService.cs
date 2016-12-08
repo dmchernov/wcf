@@ -1,37 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using NorthwindModel;
+using NorthwindModel.Extensions;
+using NorthwindModel.Models;
+using NorthwindModel.Models.CustomModels;
 using NorthwindServiceLibrary.Contracts;
-using NorthwindServiceLibrary.Models;
 
-namespace NorthwindServiceLibrary
+namespace NorthwindServiceLibrary.Services
 {
 	// ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде и файле конфигурации.
 	public class NorthwindService : INorthwindService
 	{
-		public IList<Order> GetOrders()
+		public IList<BasicOrder> GetOrders()
 		{
 			using (var db = new Northwind())
 			{
 				db.Configuration.ProxyCreationEnabled = false;
 				db.Configuration.LazyLoadingEnabled = false;
-				var orders = db.Orders.ToList();
-				//orders.RemoveRange(1, 820);
-
-				/*var t = (db as IObjectContextAdapter).ObjectContext;
-				foreach (var o in orders)
-				{
-					//t.LoadProperty(o, p => p.Employee);
-					//t.LoadProperty(o, p => p.Customer);
-					t.LoadProperty(o, p => p.Order_Details);
-					foreach (var orderDetail in o.Order_Details)
-					{
-						t.LoadProperty(orderDetail, p => p.Product);
-						t.LoadProperty(orderDetail.Product, p => p.Category);
-						t.LoadProperty(orderDetail.Product, p => p.Supplier);
-					}
-				}*/
-
+				var orders = db.Orders.ToBasicOrdersList();
+				
 				return orders;
 			}
 		}

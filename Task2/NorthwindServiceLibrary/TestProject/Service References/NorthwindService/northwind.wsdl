@@ -4,8 +4,9 @@
     <xsd:schema targetNamespace="http://epam.com/dmitrii_chernov/northwind/Imports">
       <xsd:import namespace="http://epam.com/dmitrii_chernov/northwind" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Models" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Enums" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="INorthwindService_GetOrders_InputMessage">

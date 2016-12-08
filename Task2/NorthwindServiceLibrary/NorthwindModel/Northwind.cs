@@ -1,7 +1,9 @@
-namespace NorthwindServiceLibrary.Models
-{
-	using System.Data.Entity;
+using System.Data.Entity;
+using NorthwindModel.Models;
+using NorthwindModel.Models.CustomModels;
 
+namespace NorthwindModel
+{
 	public partial class Northwind : DbContext
 	{
 		public Northwind ()

@@ -1,8 +1,8 @@
-using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
-namespace NorthwindServiceLibrary.Models
+namespace NorthwindModel.Models
 {
 
 	[DataContract]

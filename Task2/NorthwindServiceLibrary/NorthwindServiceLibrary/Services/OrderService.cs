@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using NorthwindModel;
+using NorthwindModel.Enums;
 using NorthwindModel.Extensions;
 using NorthwindModel.Models;
 using NorthwindModel.Models.CustomModels;
@@ -16,7 +15,7 @@ namespace NorthwindServiceLibrary.Services
 {
 	public class OrderService : IOrderService
 	{
-		public IList<BasicOrder> GetOrders ()
+		public IList<BasicOrder> GetOrders()
 		{
 			using (var db = new Northwind())
 			{
@@ -35,41 +34,28 @@ namespace NorthwindServiceLibrary.Services
 				db.Configuration.ProxyCreationEnabled = false;
 				db.Configuration.LazyLoadingEnabled = false;
 				var order = db.Orders.FirstOrDefault(o => o.OrderID == orderId);
-				if (order != null)
+				if (order == null)
+					throw new FaultException<OrderFault>(new OrderFault() {Message = $"Заказ с указанным номером не найден.", OrderId = orderId});
+
+				var context = (db as IObjectContextAdapter).ObjectContext;
+				context.LoadProperty(order, p => p.Order_Details);
+				context.LoadProperty(order, p => p.Customer);
+				context.LoadProperty(order, p => p.Employee);
+				context.LoadProperty(order, p => p.Shipper);
+
+				foreach (var od in order.Order_Details)
 				{
-					var context = (db as IObjectContextAdapter).ObjectContext;
-					context.LoadProperty(order, p => p.Order_Details);
-					context.LoadProperty(order, p => p.Customer);
-					context.LoadProperty(order, p => p.Employee);
-					context.LoadProperty(order, p => p.Shipper);
-					foreach (var od in order.Order_Details)
-					{
-						context.LoadProperty(od, p => p.Product);
-					}
+					context.LoadProperty(od, p => p.Product);
+					context.LoadProperty(od.Product, p => p.Category);
 				}
 				return order;
 			}
 		}
 
-		public Order Add (Order newOrder)
+		public Order Add(Order newOrder)
 		{
 			using (var db = new Northwind())
 			{
-				if (newOrder.Customer != null)
-				{
-					if (db.Customers.Find(newOrder.Customer.CustomerID) == null)
-						newOrder.Customer = db.Customers.Add(newOrder.Customer);
-					else
-						newOrder.Customer = db.Customers.Find(newOrder.Customer.CustomerID);
-				}
-				if (newOrder.Employee != null)
-				{
-					newOrder.Employee = db.Employees.Add(newOrder.Employee);
-				}
-				if (newOrder.Shipper != null)
-				{
-					newOrder.Shipper = db.Shippers.Add(newOrder.Shipper);
-				}
 				var result = db.Orders.Add(newOrder);
 				db.SaveChanges();
 				return GetOrderEx(result.OrderID);
@@ -78,32 +64,26 @@ namespace NorthwindServiceLibrary.Services
 
 		public Order SendOrderToProcess(int orderId, DateTime orderDate)
 		{
+			if (orderDate < DateTime.Today)
+				throw new FaultException<OrderFault>(new OrderFault() { Message = "Невозможно отправить заказ задним числом.", OrderId = orderId});
+
 			using (var db = new Northwind())
 			{
 				db.Configuration.ProxyCreationEnabled = false;
-				try
-				{
-					var order = db.Orders.First(o => o.OrderID == orderId);
-					if (order.OrderDate != null)
-						throw new FaultException<OrderFault>(new OrderFault()
-						{
-							Message = "Заказ уже находится в обработке",
-							OrderId = orderId
-						});
+				
+				var order = db.Orders.First(o => o.OrderID == orderId);
+				if (order.Status != OrderStatus.New)
+					throw new FaultException<OrderFault>(new OrderFault()
+					{
+						Message = "Заказ уже находится в обработке или был отправлен покупателю.",
+						OrderId = orderId,
+						Status = order.Status
+					});
 
-					order.OrderDate = orderDate;
-					db.SaveChanges();
+				order.OrderDate = orderDate;
+				db.SaveChanges();
 
-					return order;
-				}
-				catch (FaultException<OrderFault>)
-				{
-					throw;
-				}
-				catch (Exception e)
-				{
-					throw new FaultException<OrderFault>(new OrderFault() {InnerException = e, Message = "Во время обновления данных произошла ошибка", OrderId = orderId});
-				}
+				return GetOrderEx(order.OrderID);
 			}
 		}
 
@@ -112,21 +92,66 @@ namespace NorthwindServiceLibrary.Services
 			using (var db = new Northwind())
 			{
 				db.Configuration.ProxyCreationEnabled = false;
-				try
-				{
-					var order = db.Orders.First(o => o.OrderID == orderId);
-					if (order.ShippedDate != null)
-						throw new FaultException<OrderFault>(new OrderFault() { Message = "Заказ уже отправлен покупателю", OrderId = orderId });
+				var order = db.Orders.First(o => o.OrderID == orderId);
+				if (order.Status != OrderStatus.InProgress)
+					throw new FaultException<OrderFault>(new OrderFault()
+					{
+						Message = "Невозможно отправить заказ, не находящийся в обработке.",
+						OrderId = orderId
+					});
 
-					order.ShippedDate = shippedDate;
-					db.SaveChanges();
+				order.ShippedDate = shippedDate;
+				db.SaveChanges();
 
-					return order;
-				}
-				catch (Exception e)
-				{
-					throw new FaultException<OrderFault>(new OrderFault() { InnerException = e, Message = "Во время обновления данных произошла ошибка", OrderId = orderId });
-				}
+				return GetOrderEx(order.OrderID);
+			}
+		}
+
+		public Order UpdateOrder(Order orderForUpdate)
+		{
+			using (var db = new Northwind())
+			{
+				db.Configuration.ProxyCreationEnabled = false;
+
+				var oldOrder = db.Orders.FirstOrDefault(o => o.OrderID == orderForUpdate.OrderID);
+				if (oldOrder == null)
+					throw new FaultException<OrderFault>(new OrderFault() {Message = "Заказ для обновления не найден.", OrderId = orderForUpdate.OrderID});
+
+				if (oldOrder.Status != OrderStatus.New)
+					throw new FaultException<OrderFault>(new OrderFault() {Message = "Нельзя изменить отправленный или находящийся в обработке заказ.", OrderId = orderForUpdate.OrderID, Status = oldOrder.Status});
+
+				oldOrder.Customer = db.Customers.Find(orderForUpdate.Customer?.CustomerID) ?? orderForUpdate.Customer;
+				oldOrder.Employee = db.Employees.Find(orderForUpdate.Employee?.EmployeeID) ?? orderForUpdate.Employee;
+				oldOrder.ShipAddress = orderForUpdate.ShipAddress;
+
+				var oldDetails = db.Order_Details.Where(od => od.OrderID == orderForUpdate.OrderID);
+
+				db.Order_Details.RemoveRange(oldDetails);
+
+				oldOrder.Order_Details = orderForUpdate.Order_Details;
+				db.SaveChanges();
+
+				return GetOrderEx(oldOrder.OrderID);
+			}
+		}
+
+		public void DeleteOrder(int orderId)
+		{
+			using (var db = new Northwind())
+			{
+				db.Configuration.ProxyCreationEnabled = false;
+
+				var orderForDelete = db.Orders.FirstOrDefault(o => o.OrderID == orderId);
+				if (orderForDelete == null)
+					throw new FaultException<OrderFault>(new OrderFault() {Message = "Заказ с указанным номером не зарегистрирован.", OrderId = orderId});
+
+				if (orderForDelete.Status != OrderStatus.New)
+					throw new FaultException<OrderFault>(new OrderFault() {Message = "Невозможно удалить отправленный или находящийся в обработке заказ", Status = orderForDelete.Status, OrderId = orderForDelete.OrderID});
+
+				var detailsForDelete = db.Order_Details.Where(od => od.OrderID == orderId);
+				db.Order_Details.RemoveRange(detailsForDelete);
+				db.Orders.Remove(orderForDelete);
+				db.SaveChanges();
 			}
 		}
 	}

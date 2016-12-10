@@ -58,10 +58,12 @@
     <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\INorthwindService.cs" />
     <Compile Include="Contracts\IOrderService.cs" />
+    <Compile Include="Contracts\IProductService.cs" />
     <Compile Include="Faults\OrderFault.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NorthwindService.cs" />
     <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

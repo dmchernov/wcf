@@ -7,6 +7,8 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOrderService_GetOrders_InputMessage">
@@ -21,6 +23,9 @@
   <wsdl:message name="IOrderService_GetOrderEx_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOrderExResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrderEx_OrderFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults" name="detail" element="q1:OrderFault" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_Add_InputMessage">
     <wsdl:part name="parameters" element="tns:Add" />
   </wsdl:message>
@@ -33,11 +38,35 @@
   <wsdl:message name="IOrderService_SendOrderToProcess_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendOrderToProcessResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToProcess_OrderFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults" name="detail" element="q2:OrderFault" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_SendOrderToCustomer_InputMessage">
     <wsdl:part name="parameters" element="tns:SendOrderToCustomer" />
   </wsdl:message>
   <wsdl:message name="IOrderService_SendOrderToCustomer_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendOrderToCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToCustomer_OrderFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults" name="detail" element="q3:OrderFault" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_OrderFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults" name="detail" element="q4:OrderFault" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_OrderFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults" name="detail" element="q5:OrderFault" />
   </wsdl:message>
   <wsdl:portType name="IOrderService">
     <wsdl:operation name="GetOrders">
@@ -47,6 +76,7 @@
     <wsdl:operation name="GetOrderEx">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrderEx" message="tns:IOrderService_GetOrderEx_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrderExResponse" message="tns:IOrderService_GetOrderEx_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetOrderExOrderFaultFault" name="OrderFaultFault" message="tns:IOrderService_GetOrderEx_OrderFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Add">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Add" message="tns:IOrderService_Add_InputMessage" />
@@ -55,10 +85,22 @@
     <wsdl:operation name="SendOrderToProcess">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcess" message="tns:IOrderService_SendOrderToProcess_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcessResponse" message="tns:IOrderService_SendOrderToProcess_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcessOrderFaultFault" name="OrderFaultFault" message="tns:IOrderService_SendOrderToProcess_OrderFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendOrderToCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomer" message="tns:IOrderService_SendOrderToCustomer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomerResponse" message="tns:IOrderService_SendOrderToCustomer_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomerOrderFaultFault" name="OrderFaultFault" message="tns:IOrderService_SendOrderToCustomer_OrderFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateOrder" message="tns:IOrderService_UpdateOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdateOrderResponse" message="tns:IOrderService_UpdateOrder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/UpdateOrderOrderFaultFault" name="OrderFaultFault" message="tns:IOrderService_UpdateOrder_OrderFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteOrder" message="tns:IOrderService_DeleteOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderResponse" message="tns:IOrderService_DeleteOrder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderOrderFaultFault" name="OrderFaultFault" message="tns:IOrderService_DeleteOrder_OrderFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderService" type="tns:IOrderService">
@@ -80,6 +122,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="OrderFaultFault">
+        <soap:fault use="literal" name="OrderFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Add">
       <soap:operation soapAction="http://tempuri.org/IOrderService/Add" style="document" />
@@ -98,6 +143,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="OrderFaultFault">
+        <soap:fault use="literal" name="OrderFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="SendOrderToCustomer">
       <soap:operation soapAction="http://tempuri.org/IOrderService/SendOrderToCustomer" style="document" />
@@ -107,6 +155,33 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="OrderFaultFault">
+        <soap:fault use="literal" name="OrderFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/UpdateOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderFaultFault">
+        <soap:fault use="literal" name="OrderFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/DeleteOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderFaultFault">
+        <soap:fault use="literal" name="OrderFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="OrderService">

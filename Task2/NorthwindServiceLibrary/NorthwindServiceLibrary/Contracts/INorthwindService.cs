@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.ServiceModel;
 using NorthwindModel.Models;
 using NorthwindModel.Models.CustomModels;

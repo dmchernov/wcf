@@ -9,7 +9,7 @@ using NorthwindModel.Models.CustomModels;
 namespace NorthwindModel.Models
 {
 	[DataContract]
-	[KnownType(typeof(Status))]
+	[KnownType(typeof(OrderStatus))]
 	[KnownType(typeof(Employee))]
 	[KnownType(typeof(Customer))]
 	[KnownType(typeof(Shipper))]
@@ -81,16 +81,17 @@ namespace NorthwindModel.Models
 
 		[DataMember]
 		[NotMapped]
-		public Status Status
+		public OrderStatus Status
 		{
 			get
 			{
-				if (!OrderDate.HasValue)
-					return Status.New;
-				else if(ShippedDate.HasValue)
-					return Status.Complete;
-				else
-					return Status.InProgress;
+				if (!OrderDate.HasValue && !ShippedDate.HasValue)
+					return OrderStatus.New;
+
+				if(ShippedDate.HasValue)
+					return OrderStatus.Complete;
+
+				return OrderStatus.InProgress;
 			}
 			private set { }
 		}

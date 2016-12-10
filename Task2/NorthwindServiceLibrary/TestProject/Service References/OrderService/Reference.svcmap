@@ -28,6 +28,8 @@
     <MetadataFile FileName="NorthwindModel.Models.CustomModels.xsd" MetadataType="Schema" ID="4109e92d-194f-44bf-af13-f7c9ffd9e7a2" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
     <MetadataFile FileName="NorthwindModel.Models.xsd" MetadataType="Schema" ID="04bd646c-78f6-46ae-a317-eea627e91ebe" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
     <MetadataFile FileName="NorthwindModel.Enums.xsd" MetadataType="Schema" ID="4c50ab8b-64f0-4800-a833-a4ce3e2edb09" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="NorthwindServiceLibrary.Faults.xsd" MetadataType="Schema" ID="e6906b0e-7a2b-4d13-bd81-302b9c2cb2be" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="7b2ed522-c591-450e-aba6-502bcc2052d0" SourceId="1" SourceUrl="http://localhost/OrderService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

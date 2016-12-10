@@ -3,7 +3,7 @@
 namespace NorthwindModel.Enums
 {
 	[DataContract]
-	public enum Status
+	public enum OrderStatus
 	{
 		[EnumMember]
 		None = 0,

@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Status.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Extensions\OrderExtensions.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />

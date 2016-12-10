@@ -1,6 +1,5 @@
 using System.Data.Entity;
 using NorthwindModel.Models;
-using NorthwindModel.Models.CustomModels;
 
 namespace NorthwindModel
 {

@@ -16,7 +16,7 @@
           <xs:element minOccurs="0" name="ShipPostalCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ShipVia" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Shipper" nillable="true" type="tns:Shipper" />
-          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" minOccurs="0" name="Status" type="q2:Status" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" minOccurs="0" name="Status" type="q2:OrderStatus" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -59,14 +59,9 @@
   <xs:complexType name="Product">
     <xs:sequence>
       <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
-      <xs:element minOccurs="0" name="Discontinued" type="xs:boolean" />
       <xs:element minOccurs="0" name="ProductID" type="xs:int" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ReorderLevel" nillable="true" type="xs:short" />
-      <xs:element minOccurs="0" name="Supplier" nillable="true" type="tns:Supplier" />
       <xs:element minOccurs="0" name="UnitPrice" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="UnitsInStock" nillable="true" type="xs:short" />
-      <xs:element minOccurs="0" name="UnitsOnOrder" nillable="true" type="xs:short" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Product" nillable="true" type="tns:Product" />

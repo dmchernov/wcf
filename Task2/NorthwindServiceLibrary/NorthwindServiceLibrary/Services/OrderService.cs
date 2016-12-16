@@ -145,8 +145,8 @@ namespace NorthwindServiceLibrary.Services
 				if (orderForDelete == null)
 					throw new FaultException<OrderFault>(new OrderFault() {Message = "Заказ с указанным номером не зарегистрирован.", OrderId = orderId});
 
-				if (orderForDelete.Status != OrderStatus.New)
-					throw new FaultException<OrderFault>(new OrderFault() {Message = "Невозможно удалить отправленный или находящийся в обработке заказ", Status = orderForDelete.Status, OrderId = orderForDelete.OrderID});
+				if (orderForDelete.Status == OrderStatus.Complete)
+					throw new FaultException<OrderFault>(new OrderFault() {Message = "Невозможно удалить отправленный заказ.", Status = orderForDelete.Status, OrderId = orderForDelete.OrderID});
 
 				var detailsForDelete = db.Order_Details.Where(od => od.OrderID == orderId);
 				db.Order_Details.RemoveRange(detailsForDelete);

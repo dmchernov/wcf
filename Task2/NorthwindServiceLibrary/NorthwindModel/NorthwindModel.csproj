@@ -51,10 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Extensions\CategoryExtensions.cs" />
     <Compile Include="Extensions\OrderExtensions.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerDemographic.cs" />
+    <Compile Include="Models\CustomModels\BasicCategory.cs" />
     <Compile Include="Models\CustomModels\BasicOrder.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Order.cs" />

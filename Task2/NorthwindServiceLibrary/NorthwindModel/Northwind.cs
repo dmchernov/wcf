@@ -3,7 +3,7 @@ using NorthwindModel.Models;
 
 namespace NorthwindModel
 {
-	public partial class Northwind : DbContext
+	public class Northwind : DbContext
 	{
 		public Northwind ()
 			: base("name=Northwind")

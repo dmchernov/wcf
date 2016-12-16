@@ -6,7 +6,6 @@ namespace NorthwindModel.Models.CustomModels
 {
 	[DataContract]
 	[KnownType(typeof(Order))]
-	//[Table("Orders")]
 	public class BasicOrder
 	{
 		public BasicOrder () { }
@@ -21,12 +20,15 @@ namespace NorthwindModel.Models.CustomModels
 		[DataMember]
 		public DateTime? ShippedDate { get; set; }
 
+		[StringLength(60)]
 		[DataMember]
 		public string ShipAddress { get; set; }
 
+		[StringLength(15)]
 		[DataMember]
 		public string ShipCity { get; set; }
 
+		[StringLength(15)]
 		[DataMember]
 		public string ShipRegion { get; set; }
 	}

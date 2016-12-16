@@ -27,9 +27,7 @@ namespace NorthwindModel.Models
 		public int OrderID { get; set; }*/
 
         [StringLength(5)]
-		//[IgnoreDataMember]
         public string CustomerID { get; set; }
-		//[IgnoreDataMember]
         public int? EmployeeID { get; set; }
 
 		/*[DataMember]

@@ -7,7 +7,7 @@ namespace NorthwindModel.Models
 	[Table("Order Details")]
 	[DataContract]
 	[KnownType(typeof(Product))]
-    public partial class Order_Detail
+    public class Order_Detail
     {
         [Key]
         [Column(Order = 0)]

@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace NorthwindModel.Models
 {
 	[DataContract]
-    public partial class Employee
+    public class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()

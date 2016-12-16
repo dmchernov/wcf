@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NorthwindModel.Models
 {
-	public partial class Territory
+	public class Territory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Territory()

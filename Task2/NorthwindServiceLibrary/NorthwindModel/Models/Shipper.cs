@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace NorthwindModel.Models
 {
 	[DataContract]
-    public partial class Shipper
+    public class Shipper
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shipper()

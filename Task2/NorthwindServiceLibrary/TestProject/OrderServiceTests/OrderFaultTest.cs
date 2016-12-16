@@ -61,5 +61,22 @@ namespace TestProject.OrderServiceTests
 			ex = Assert.Catch<FaultException<OrderFault>>(() => { service.UpdateOrder(order); });
 			Assert.AreEqual(ex.Detail.Message, "Нельзя изменить отправленный или находящийся в обработке заказ.");
 		}
+
+		[Test]
+		public void DeleteOrderFaultTest()
+		{
+			var order = OrdersHelper.AddOrder();
+
+			var service = new OrderServiceClient();
+
+			var ex = Assert.Catch<FaultException<OrderFault>>(() => { service.DeleteOrder(-1); });
+			Assert.AreEqual(ex.Detail.Message, "Заказ с указанным номером не зарегистрирован.");
+
+			order = service.SendOrderToProcess(order.OrderID, DateTime.Now);
+			order = service.SendOrderToCustomer(order.OrderID, DateTime.Now);
+
+			ex = Assert.Catch<FaultException<OrderFault>>(() => { service.DeleteOrder(order.OrderID); });
+			Assert.AreEqual(ex.Detail.Message, "Невозможно удалить отправленный заказ.");
+		}
 	}
 }

@@ -17,4 +17,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BasicOrder" nillable="true" type="tns:BasicOrder" />
+  <xs:complexType name="BasicCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasicCategory" nillable="true" type="tns:BasicCategory" />
 </xs:schema>

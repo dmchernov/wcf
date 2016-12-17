@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using NorthwindModel;
 using NorthwindModel.Enums;
 using NorthwindModel.Extensions;
@@ -13,6 +14,7 @@ using NorthwindServiceLibrary.Faults;
 
 namespace NorthwindServiceLibrary.Services
 {
+	[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
 	public class OrderService : IOrderService
 	{
 		public IList<BasicOrder> GetOrders()
@@ -83,6 +85,9 @@ namespace NorthwindServiceLibrary.Services
 				order.OrderDate = orderDate;
 				db.SaveChanges();
 
+				//callBacks.ForEach(subscription => subscription.SendInformationMessage($"Заказ №{orderId} принят в обработку."));
+				SendMessage($"Заказ №{orderId} принят в обработку.");
+
 				return GetOrderEx(order.OrderID);
 			}
 		}
@@ -102,6 +107,13 @@ namespace NorthwindServiceLibrary.Services
 
 				order.ShippedDate = shippedDate;
 				db.SaveChanges();
+
+				/*callBacks.ForEach(subscription =>
+				{
+					
+					subscription.SendInformationMessage($"Заказ №{orderId} отправлен покупателю.");
+				});*/
+				SendMessage($"Заказ №{orderId} отправлен покупателю.");
 
 				return GetOrderEx(order.OrderID);
 			}
@@ -152,6 +164,41 @@ namespace NorthwindServiceLibrary.Services
 				db.Order_Details.RemoveRange(detailsForDelete);
 				db.Orders.Remove(orderForDelete);
 				db.SaveChanges();
+			}
+		}
+
+		static List<IOrderSubscription> callBacks = new List<IOrderSubscription>();
+
+		public void Subscribe()
+		{
+			var callback = OperationContext.Current.GetCallbackChannel<IOrderSubscription>();
+			if (!callBacks.Contains(callback))
+			{
+				callBacks.Add(callback);
+				callback.SendInformationMessage("Вы успешно подписались на уведомления.");
+			}
+			else
+				callback.SendInformationMessage("Вы уже подписаны.");
+		}
+
+		public void UnSubscribe()
+		{
+			var callback = OperationContext.Current.GetCallbackChannel<IOrderSubscription>();
+			if (callBacks.Contains(callback))
+			{
+				callBacks.Remove(callback);
+				callback.SendInformationMessage("Вы успешно отписались от получения уведомлений.");
+			}
+			else
+				callback.SendInformationMessage("Невозможно отписаться, т.к. Вы не подписаны.");
+		}
+
+		private void SendMessage(string message)
+		{
+			callBacks.RemoveAll(c => ((ICommunicationObject)c).State != CommunicationState.Opened);
+			foreach (var orderSubscription in callBacks)
+			{
+				orderSubscription.SendInformationMessage(message);
 			}
 		}
 	}

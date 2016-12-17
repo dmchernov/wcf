@@ -7,7 +7,7 @@ using NorthwindServiceLibrary.Faults;
 
 namespace NorthwindServiceLibrary.Contracts
 {
-	[ServiceContract]
+	[ServiceContract(CallbackContract = typeof(IOrderSubscription))]
 	public interface IOrderService
 	{
 		[OperationContract]
@@ -35,5 +35,11 @@ namespace NorthwindServiceLibrary.Contracts
 		[OperationContract]
 		[FaultContract(typeof(OrderFault))]
 		void DeleteOrder (int orderId);
+
+		[OperationContract(IsOneWay = true)]
+		void Subscribe();
+
+		[OperationContract(IsOneWay = true)]
+		void UnSubscribe();
 	}
 }

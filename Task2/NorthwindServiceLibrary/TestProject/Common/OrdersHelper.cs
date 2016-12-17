@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Linq;
+using System.ServiceModel;
 using TestProject.OrderService;
 using TestProject.ProductService;
 
 namespace TestProject.Common
 {
-	public static class OrdersHelper
+	public class OrdersHelper : IOrderServiceCallback
 	{
-		public static Order AddOrder ()
+		public Order AddOrder ()
 		{
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 
 			var order = new Order()
 			{
@@ -80,6 +81,11 @@ namespace TestProject.Common
 					Console.WriteLine($"ProductID: {detail.ProductID} Quantity: {detail.Quantity} UnitPrice: {detail.UnitPrice:C} Discount: {detail.Discount}");
 				});
 			}
+		}
+
+		public void SendInformationMessage(string message)
+		{
+			Console.WriteLine(message);
 		}
 	}
 }

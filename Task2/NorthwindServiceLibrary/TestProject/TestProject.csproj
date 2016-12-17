@@ -60,11 +60,6 @@
     <Compile Include="Common\OrdersHelper.cs" />
     <Compile Include="OrderServiceTests\OrderFaultTest.cs" />
     <Compile Include="OrderServiceTests\OrderServiceTest.cs" />
-    <Compile Include="Service References\NorthwindService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\OrderService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,29 +77,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\NorthwindService\northwind.wsdl" />
-    <None Include="Service References\NorthwindService\northwind.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NorthwindService\NorthwindModel.Enums.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NorthwindService\NorthwindModel.Models.CustomModels.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NorthwindService\NorthwindModel.Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NorthwindService\service.wsdl" />
-    <None Include="Service References\NorthwindService\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NorthwindService\TestProject.NorthwindService.BasicOrder.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\NorthwindService\TestProject.NorthwindService.Order.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\OrderService\NorthwindModel.Enums.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -151,21 +123,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\NorthwindService\" />
     <WCFMetadataStorage Include="Service References\OrderService\" />
     <WCFMetadataStorage Include="Service References\ProductService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\NorthwindService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\NorthwindService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\NorthwindService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\OrderService\configuration91.svcinfo" />

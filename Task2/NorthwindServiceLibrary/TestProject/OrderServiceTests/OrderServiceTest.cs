@@ -8,12 +8,12 @@ using TestProject.ProductService;
 
 namespace TestProject.OrderServiceTests
 {
-	public class OrderServiceTest
+	public class OrderServiceTest : IOrderServiceCallback
 	{
 		[Test]
 		public void GetOrdersTest ()
 		{
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 
 			foreach (var order in service.GetOrders())
 			{
@@ -24,7 +24,7 @@ namespace TestProject.OrderServiceTests
 		[Test]
 		public void GetOrderExTest ()
 		{
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 
 			int orderId = service.GetOrders().First().OrderID;
 			var fullOrderData = service.GetOrderEx(orderId);
@@ -36,7 +36,7 @@ namespace TestProject.OrderServiceTests
 		[Test]
 		public void AddOrderTest()
 		{
-			var ord = OrdersHelper.AddOrder();
+			var ord = new OrdersHelper().AddOrder();
 
 			Console.WriteLine(ord.OrderID);
 			Assert.AreEqual(ord.Customer.CompanyName, "Test");
@@ -58,9 +58,10 @@ namespace TestProject.OrderServiceTests
 		[Test]
 		public void ProcessOrderTest()
 		{
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
+			service.Subscribe();
 
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 
 			var currentDateTime = DateTime.Now;
 			var processedOrder = service.SendOrderToProcess(order.OrderID, currentDateTime);
@@ -68,14 +69,16 @@ namespace TestProject.OrderServiceTests
 
 			OrdersHelper.PrintFullOrderInfo(order);
 			OrdersHelper.PrintFullOrderInfo(processedOrder);
+			service.UnSubscribe();
 		}
 
 		[Test]
 		public void ShipOrderTest()
 		{
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
+			service.Subscribe();
 
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 			order = service.SendOrderToProcess(order.OrderID, DateTime.Now);
 
 			var currentDateTime = DateTime.Today.AddDays(7);
@@ -85,12 +88,14 @@ namespace TestProject.OrderServiceTests
 
 			OrdersHelper.PrintFullOrderInfo(order);
 			OrdersHelper.PrintFullOrderInfo(shippedOrder);
+
+			service.UnSubscribe();
 		}
 
 		[Test]
 		public void UpdateOrderTest()
 		{
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 			OrdersHelper.PrintFullOrderInfo(order);
 
 			var products = new ProductServiceClient().GetAllProducts();
@@ -103,7 +108,7 @@ namespace TestProject.OrderServiceTests
 				new Order_Detail() {Discount = 0, ProductID = products[products.Length -3 >= 0 ? products.Length -3 : 0].ProductID, Quantity = 300, UnitPrice = 1}, 
 			};
 
-			var updatedOrder = new OrderServiceClient().UpdateOrder(order);
+			var updatedOrder = new OrderServiceClient(new InstanceContext(this)).UpdateOrder(order);
 
 			Assert.AreEqual(updatedOrder.ShipAddress, "New Ship Address");
 			Assert.AreEqual(updatedOrder.Order_Details.Length, 3);
@@ -114,12 +119,15 @@ namespace TestProject.OrderServiceTests
 		[Test]
 		public void DeleteOrderTest()
 		{
-			var orderForDelete = OrdersHelper.AddOrder();
+			var orderForDelete = new OrdersHelper().AddOrder();
 
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 			service.DeleteOrder(orderForDelete.OrderID);
+		}
 
-			Assert.Catch(typeof(FaultException<OrderFault>), () => service.DeleteOrder(orderForDelete.OrderID));
+		public void SendInformationMessage(string message)
+		{
+			Console.WriteLine(message);
 		}
 	}
 }

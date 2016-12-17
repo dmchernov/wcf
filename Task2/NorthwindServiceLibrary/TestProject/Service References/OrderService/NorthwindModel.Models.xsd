@@ -66,11 +66,13 @@
   </xs:complexType>
   <xs:element name="Product" nillable="true" type="tns:Product" />
   <xs:complexType name="Category">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
-      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-    </xs:sequence>
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" base="q3:BasicCategory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:element name="Category" nillable="true" type="tns:Category" />
   <xs:complexType name="Supplier">

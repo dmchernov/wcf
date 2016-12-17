@@ -6,49 +6,49 @@ using TestProject.OrderService;
 
 namespace TestProject.OrderServiceTests
 {
-	public class OrderFaultTest
+	public class OrderFaultTest : IOrderServiceCallback
 	{
 		[Test]
 		public void GetOrderExFaultTest()
 		{
-			var ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient().GetOrderEx(-1); });
+			var ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient(new InstanceContext(this)).GetOrderEx(-1); });
 			Assert.AreEqual(ex.Detail.Message, "Заказ с указанным номером не найден.");
 		}
 
 		[Test]
 		public void SendOrderToProcessFaultTest()
 		{
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 			var processedOrder = service.SendOrderToProcess(order.OrderID, DateTime.Now);
 
-			var ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient().SendOrderToProcess(processedOrder.OrderID, DateTime.Now); });
+			var ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient(new InstanceContext(this)).SendOrderToProcess(processedOrder.OrderID, DateTime.Now); });
 			Assert.AreEqual(ex.Detail.Message, "Заказ уже находится в обработке или был отправлен покупателю.");
 
-			ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient().SendOrderToProcess(processedOrder.OrderID, DateTime.Now.AddDays(-7)); });
+			ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient(new InstanceContext(this)).SendOrderToProcess(processedOrder.OrderID, DateTime.Now.AddDays(-7)); });
 			Assert.AreEqual(ex.Detail.Message, "Невозможно отправить заказ задним числом.");
 		}
 
 		[Test]
 		public void SendOrderToCustomerFaultTest()
 		{
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 			var processedOrder = service.SendOrderToProcess(order.OrderID, DateTime.Now);
 			var shippedOrder = service.SendOrderToCustomer(processedOrder.OrderID, DateTime.Now.AddDays(7));
 
-			var ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient().SendOrderToCustomer(shippedOrder.OrderID, DateTime.Now.AddDays(10)); });
+			var ex = Assert.Catch<FaultException<OrderFault>>(() => { new OrderServiceClient(new InstanceContext(this)).SendOrderToCustomer(shippedOrder.OrderID, DateTime.Now.AddDays(10)); });
 			Assert.AreEqual(ex.Detail.Message, "Невозможно отправить заказ, не находящийся в обработке.");
 		}
 
 		[Test]
 		public void UpdateOrderFaultTest()
 		{
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 			var oldId = order.OrderID;
 			order.OrderID = -100;
 
@@ -65,9 +65,9 @@ namespace TestProject.OrderServiceTests
 		[Test]
 		public void DeleteOrderFaultTest()
 		{
-			var order = OrdersHelper.AddOrder();
+			var order = new OrdersHelper().AddOrder();
 
-			var service = new OrderServiceClient();
+			var service = new OrderServiceClient(new InstanceContext(this));
 
 			var ex = Assert.Catch<FaultException<OrderFault>>(() => { service.DeleteOrder(-1); });
 			Assert.AreEqual(ex.Detail.Message, "Заказ с указанным номером не зарегистрирован.");
@@ -77,6 +77,11 @@ namespace TestProject.OrderServiceTests
 
 			ex = Assert.Catch<FaultException<OrderFault>>(() => { service.DeleteOrder(order.OrderID); });
 			Assert.AreEqual(ex.Detail.Message, "Невозможно удалить отправленный заказ.");
+		}
+
+		public void SendInformationMessage(string message)
+		{
+			Console.WriteLine(message);
 		}
 	}
 }

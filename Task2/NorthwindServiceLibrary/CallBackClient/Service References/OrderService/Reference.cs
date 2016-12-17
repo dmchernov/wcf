@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestProject.NorthwindService {
+namespace CallBackClient.OrderService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,7 +17,7 @@ namespace TestProject.NorthwindService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BasicOrder", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TestProject.NorthwindService.Order))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CallBackClient.OrderService.Order))]
     public partial class BasicOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -143,19 +143,19 @@ namespace TestProject.NorthwindService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models")]
     [System.SerializableAttribute()]
-    public partial class Order : TestProject.NorthwindService.BasicOrder {
+    public partial class Order : CallBackClient.OrderService.BasicOrder {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Customer CustomerField;
+        private CallBackClient.OrderService.Customer CustomerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Employee EmployeeField;
+        private CallBackClient.OrderService.Employee EmployeeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> FreightField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Order_Detail[] Order_DetailsField;
+        private CallBackClient.OrderService.Order_Detail[] Order_DetailsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> RequiredDateField;
@@ -173,13 +173,13 @@ namespace TestProject.NorthwindService {
         private System.Nullable<int> ShipViaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Shipper ShipperField;
+        private CallBackClient.OrderService.Shipper ShipperField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Status StatusField;
+        private CallBackClient.OrderService.OrderStatus StatusField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Customer Customer {
+        public CallBackClient.OrderService.Customer Customer {
             get {
                 return this.CustomerField;
             }
@@ -192,7 +192,7 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Employee Employee {
+        public CallBackClient.OrderService.Employee Employee {
             get {
                 return this.EmployeeField;
             }
@@ -218,7 +218,7 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Order_Detail[] Order_Details {
+        public CallBackClient.OrderService.Order_Detail[] Order_Details {
             get {
                 return this.Order_DetailsField;
             }
@@ -296,7 +296,7 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Shipper Shipper {
+        public CallBackClient.OrderService.Shipper Shipper {
             get {
                 return this.ShipperField;
             }
@@ -309,7 +309,7 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Status Status {
+        public CallBackClient.OrderService.OrderStatus Status {
             get {
                 return this.StatusField;
             }
@@ -585,7 +585,7 @@ namespace TestProject.NorthwindService {
         private int OrderIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Product ProductField;
+        private CallBackClient.OrderService.Product ProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ProductIDField;
@@ -633,7 +633,7 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Product Product {
+        public CallBackClient.OrderService.Product Product {
             get {
                 return this.ProductField;
             }
@@ -695,8 +695,8 @@ namespace TestProject.NorthwindService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Status", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums")]
-    public enum Status : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatus", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums")]
+    public enum OrderStatus : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         None = 0,
@@ -721,10 +721,7 @@ namespace TestProject.NorthwindService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Category CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool DiscontinuedField;
+        private CallBackClient.OrderService.Category CategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ProductIDField;
@@ -733,19 +730,7 @@ namespace TestProject.NorthwindService {
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> ReorderLevelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TestProject.NorthwindService.Supplier SupplierField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> UnitPriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> UnitsInStockField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> UnitsOnOrderField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -758,7 +743,7 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Category Category {
+        public CallBackClient.OrderService.Category Category {
             get {
                 return this.CategoryField;
             }
@@ -766,19 +751,6 @@ namespace TestProject.NorthwindService {
                 if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
                     this.CategoryField = value;
                     this.RaisePropertyChanged("Category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Discontinued {
-            get {
-                return this.DiscontinuedField;
-            }
-            set {
-                if ((this.DiscontinuedField.Equals(value) != true)) {
-                    this.DiscontinuedField = value;
-                    this.RaisePropertyChanged("Discontinued");
                 }
             }
         }
@@ -810,32 +782,6 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> ReorderLevel {
-            get {
-                return this.ReorderLevelField;
-            }
-            set {
-                if ((this.ReorderLevelField.Equals(value) != true)) {
-                    this.ReorderLevelField = value;
-                    this.RaisePropertyChanged("ReorderLevel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TestProject.NorthwindService.Supplier Supplier {
-            get {
-                return this.SupplierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SupplierField, value) != true)) {
-                    this.SupplierField = value;
-                    this.RaisePropertyChanged("Supplier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<decimal> UnitPrice {
             get {
                 return this.UnitPriceField;
@@ -844,32 +790,6 @@ namespace TestProject.NorthwindService {
                 if ((this.UnitPriceField.Equals(value) != true)) {
                     this.UnitPriceField = value;
                     this.RaisePropertyChanged("UnitPrice");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> UnitsInStock {
-            get {
-                return this.UnitsInStockField;
-            }
-            set {
-                if ((this.UnitsInStockField.Equals(value) != true)) {
-                    this.UnitsInStockField = value;
-                    this.RaisePropertyChanged("UnitsInStock");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> UnitsOnOrder {
-            get {
-                return this.UnitsOnOrderField;
-            }
-            set {
-                if ((this.UnitsOnOrderField.Equals(value) != true)) {
-                    this.UnitsOnOrderField = value;
-                    this.RaisePropertyChanged("UnitsOnOrder");
                 }
             }
         }
@@ -888,7 +808,31 @@ namespace TestProject.NorthwindService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models")]
     [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Category : CallBackClient.OrderService.BasicCategory {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BasicCategory", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CallBackClient.OrderService.Category))]
+    public partial class BasicCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -898,9 +842,6 @@ namespace TestProject.NorthwindService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategoryNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -938,19 +879,6 @@ namespace TestProject.NorthwindService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -963,21 +891,24 @@ namespace TestProject.NorthwindService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Supplier", Namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
     [System.SerializableAttribute()]
-    public partial class Supplier : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class OrderFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyNameField;
+        private System.Exception InnerExceptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContactNameField;
+        private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContactTitleField;
+        private int OrderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CallBackClient.OrderService.OrderStatus StatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -990,40 +921,53 @@ namespace TestProject.NorthwindService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CompanyName {
+        public System.Exception InnerException {
             get {
-                return this.CompanyNameField;
+                return this.InnerExceptionField;
             }
             set {
-                if ((object.ReferenceEquals(this.CompanyNameField, value) != true)) {
-                    this.CompanyNameField = value;
-                    this.RaisePropertyChanged("CompanyName");
+                if ((object.ReferenceEquals(this.InnerExceptionField, value) != true)) {
+                    this.InnerExceptionField = value;
+                    this.RaisePropertyChanged("InnerException");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ContactName {
+        public string Message {
             get {
-                return this.ContactNameField;
+                return this.MessageField;
             }
             set {
-                if ((object.ReferenceEquals(this.ContactNameField, value) != true)) {
-                    this.ContactNameField = value;
-                    this.RaisePropertyChanged("ContactName");
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ContactTitle {
+        public int OrderId {
             get {
-                return this.ContactTitleField;
+                return this.OrderIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.ContactTitleField, value) != true)) {
-                    this.ContactTitleField = value;
-                    this.RaisePropertyChanged("ContactTitle");
+                if ((this.OrderIdField.Equals(value) != true)) {
+                    this.OrderIdField = value;
+                    this.RaisePropertyChanged("OrderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CallBackClient.OrderService.OrderStatus Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
                 }
             }
         }
@@ -1039,91 +983,174 @@ namespace TestProject.NorthwindService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://epam.com/dmitrii_chernov/northwind", ConfigurationName="NorthwindService.INorthwindService")]
-    public interface INorthwindService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrderService.IOrderService", CallbackContract=typeof(CallBackClient.OrderService.IOrderServiceCallback))]
+    public interface IOrderService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrders", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrdersResponse")]
-        TestProject.NorthwindService.BasicOrder[] GetOrders();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrders", ReplyAction="http://tempuri.org/IOrderService/GetOrdersResponse")]
+        CallBackClient.OrderService.BasicOrder[] GetOrders();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrders", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrdersResponse")]
-        System.Threading.Tasks.Task<TestProject.NorthwindService.BasicOrder[]> GetOrdersAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrders", ReplyAction="http://tempuri.org/IOrderService/GetOrdersResponse")]
+        System.Threading.Tasks.Task<CallBackClient.OrderService.BasicOrder[]> GetOrdersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderEx", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderExResponse")]
-        TestProject.NorthwindService.Order GetOrderEx(int orderId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderEx", ReplyAction="http://tempuri.org/IOrderService/GetOrderExResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CallBackClient.OrderService.OrderFault), Action="http://tempuri.org/IOrderService/GetOrderExOrderFaultFault", Name="OrderFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
+        CallBackClient.OrderService.Order GetOrderEx(int orderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderEx", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/GetOrderExResponse")]
-        System.Threading.Tasks.Task<TestProject.NorthwindService.Order> GetOrderExAsync(int orderId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderEx", ReplyAction="http://tempuri.org/IOrderService/GetOrderExResponse")]
+        System.Threading.Tasks.Task<CallBackClient.OrderService.Order> GetOrderExAsync(int orderId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/Add", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/AddResponse")]
-        TestProject.NorthwindService.Order Add(TestProject.NorthwindService.Order newOrder);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Add", ReplyAction="http://tempuri.org/IOrderService/AddResponse")]
+        CallBackClient.OrderService.Order Add(CallBackClient.OrderService.Order newOrder);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/Add", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/AddResponse")]
-        System.Threading.Tasks.Task<TestProject.NorthwindService.Order> AddAsync(TestProject.NorthwindService.Order newOrder);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Add", ReplyAction="http://tempuri.org/IOrderService/AddResponse")]
+        System.Threading.Tasks.Task<CallBackClient.OrderService.Order> AddAsync(CallBackClient.OrderService.Order newOrder);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContract", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContractResponse")]
-        int TestContract();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/SendOrderToProcess", ReplyAction="http://tempuri.org/IOrderService/SendOrderToProcessResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CallBackClient.OrderService.OrderFault), Action="http://tempuri.org/IOrderService/SendOrderToProcessOrderFaultFault", Name="OrderFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
+        CallBackClient.OrderService.Order SendOrderToProcess(int orderId, System.DateTime orderDate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContract", ReplyAction="http://epam.com/dmitrii_chernov/northwind/INorthwindService/TestContractResponse")]
-        System.Threading.Tasks.Task<int> TestContractAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/SendOrderToProcess", ReplyAction="http://tempuri.org/IOrderService/SendOrderToProcessResponse")]
+        System.Threading.Tasks.Task<CallBackClient.OrderService.Order> SendOrderToProcessAsync(int orderId, System.DateTime orderDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/SendOrderToCustomer", ReplyAction="http://tempuri.org/IOrderService/SendOrderToCustomerResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CallBackClient.OrderService.OrderFault), Action="http://tempuri.org/IOrderService/SendOrderToCustomerOrderFaultFault", Name="OrderFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
+        CallBackClient.OrderService.Order SendOrderToCustomer(int orderId, System.DateTime shippedDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/SendOrderToCustomer", ReplyAction="http://tempuri.org/IOrderService/SendOrderToCustomerResponse")]
+        System.Threading.Tasks.Task<CallBackClient.OrderService.Order> SendOrderToCustomerAsync(int orderId, System.DateTime shippedDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdateOrder", ReplyAction="http://tempuri.org/IOrderService/UpdateOrderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CallBackClient.OrderService.OrderFault), Action="http://tempuri.org/IOrderService/UpdateOrderOrderFaultFault", Name="OrderFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
+        CallBackClient.OrderService.Order UpdateOrder(CallBackClient.OrderService.Order orderForUpdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdateOrder", ReplyAction="http://tempuri.org/IOrderService/UpdateOrderResponse")]
+        System.Threading.Tasks.Task<CallBackClient.OrderService.Order> UpdateOrderAsync(CallBackClient.OrderService.Order orderForUpdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/DeleteOrder", ReplyAction="http://tempuri.org/IOrderService/DeleteOrderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CallBackClient.OrderService.OrderFault), Action="http://tempuri.org/IOrderService/DeleteOrderOrderFaultFault", Name="OrderFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
+        void DeleteOrder(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/DeleteOrder", ReplyAction="http://tempuri.org/IOrderService/DeleteOrderResponse")]
+        System.Threading.Tasks.Task DeleteOrderAsync(int orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOrderService/Subscribe")]
+        void Subscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOrderService/Subscribe")]
+        System.Threading.Tasks.Task SubscribeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOrderService/UnSubscribe")]
+        void UnSubscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOrderService/UnSubscribe")]
+        System.Threading.Tasks.Task UnSubscribeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface INorthwindServiceChannel : TestProject.NorthwindService.INorthwindService, System.ServiceModel.IClientChannel {
+    public interface IOrderServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOrderService/SendInformationMessage")]
+        void SendInformationMessage(string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IOrderServiceChannel : CallBackClient.OrderService.IOrderService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class NorthwindServiceClient : System.ServiceModel.ClientBase<TestProject.NorthwindService.INorthwindService>, TestProject.NorthwindService.INorthwindService {
+    public partial class OrderServiceClient : System.ServiceModel.DuplexClientBase<CallBackClient.OrderService.IOrderService>, CallBackClient.OrderService.IOrderService {
         
-        public NorthwindServiceClient() {
+        public OrderServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public NorthwindServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public OrderServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public NorthwindServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public OrderServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public NorthwindServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public OrderServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public NorthwindServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public OrderServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public TestProject.NorthwindService.BasicOrder[] GetOrders() {
+        public CallBackClient.OrderService.BasicOrder[] GetOrders() {
             return base.Channel.GetOrders();
         }
         
-        public System.Threading.Tasks.Task<TestProject.NorthwindService.BasicOrder[]> GetOrdersAsync() {
+        public System.Threading.Tasks.Task<CallBackClient.OrderService.BasicOrder[]> GetOrdersAsync() {
             return base.Channel.GetOrdersAsync();
         }
         
-        public TestProject.NorthwindService.Order GetOrderEx(int orderId) {
+        public CallBackClient.OrderService.Order GetOrderEx(int orderId) {
             return base.Channel.GetOrderEx(orderId);
         }
         
-        public System.Threading.Tasks.Task<TestProject.NorthwindService.Order> GetOrderExAsync(int orderId) {
+        public System.Threading.Tasks.Task<CallBackClient.OrderService.Order> GetOrderExAsync(int orderId) {
             return base.Channel.GetOrderExAsync(orderId);
         }
         
-        public TestProject.NorthwindService.Order Add(TestProject.NorthwindService.Order newOrder) {
+        public CallBackClient.OrderService.Order Add(CallBackClient.OrderService.Order newOrder) {
             return base.Channel.Add(newOrder);
         }
         
-        public System.Threading.Tasks.Task<TestProject.NorthwindService.Order> AddAsync(TestProject.NorthwindService.Order newOrder) {
+        public System.Threading.Tasks.Task<CallBackClient.OrderService.Order> AddAsync(CallBackClient.OrderService.Order newOrder) {
             return base.Channel.AddAsync(newOrder);
         }
         
-        public int TestContract() {
-            return base.Channel.TestContract();
+        public CallBackClient.OrderService.Order SendOrderToProcess(int orderId, System.DateTime orderDate) {
+            return base.Channel.SendOrderToProcess(orderId, orderDate);
         }
         
-        public System.Threading.Tasks.Task<int> TestContractAsync() {
-            return base.Channel.TestContractAsync();
+        public System.Threading.Tasks.Task<CallBackClient.OrderService.Order> SendOrderToProcessAsync(int orderId, System.DateTime orderDate) {
+            return base.Channel.SendOrderToProcessAsync(orderId, orderDate);
+        }
+        
+        public CallBackClient.OrderService.Order SendOrderToCustomer(int orderId, System.DateTime shippedDate) {
+            return base.Channel.SendOrderToCustomer(orderId, shippedDate);
+        }
+        
+        public System.Threading.Tasks.Task<CallBackClient.OrderService.Order> SendOrderToCustomerAsync(int orderId, System.DateTime shippedDate) {
+            return base.Channel.SendOrderToCustomerAsync(orderId, shippedDate);
+        }
+        
+        public CallBackClient.OrderService.Order UpdateOrder(CallBackClient.OrderService.Order orderForUpdate) {
+            return base.Channel.UpdateOrder(orderForUpdate);
+        }
+        
+        public System.Threading.Tasks.Task<CallBackClient.OrderService.Order> UpdateOrderAsync(CallBackClient.OrderService.Order orderForUpdate) {
+            return base.Channel.UpdateOrderAsync(orderForUpdate);
+        }
+        
+        public void DeleteOrder(int orderId) {
+            base.Channel.DeleteOrder(orderId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteOrderAsync(int orderId) {
+            return base.Channel.DeleteOrderAsync(orderId);
+        }
+        
+        public void Subscribe() {
+            base.Channel.Subscribe();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeAsync() {
+            return base.Channel.SubscribeAsync();
+        }
+        
+        public void UnSubscribe() {
+            base.Channel.UnSubscribe();
+        }
+        
+        public System.Threading.Tasks.Task UnSubscribeAsync() {
+            return base.Channel.UnSubscribeAsync();
         }
     }
 }

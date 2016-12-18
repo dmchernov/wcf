@@ -1,6 +1,6 @@
 ﻿namespace CategoriesApplication
 {
-	partial class Form1
+	partial class CategoriesForm
 	{
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -29,15 +29,15 @@
 		private void InitializeComponent ()
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.tbPath = new System.Windows.Forms.TextBox();
-			this.btnBrowse = new System.Windows.Forms.Button();
-			this.lblCategory = new System.Windows.Forms.Label();
-			this.cbCategories = new System.Windows.Forms.ComboBox();
-			this.btnGet = new System.Windows.Forms.Button();
+			this.btnClear = new System.Windows.Forms.Button();
 			this.btnSet = new System.Windows.Forms.Button();
+			this.btnGet = new System.Windows.Forms.Button();
+			this.cbCategories = new System.Windows.Forms.ComboBox();
+			this.lblCategory = new System.Windows.Forms.Label();
+			this.btnBrowse = new System.Windows.Forms.Button();
+			this.tbPath = new System.Windows.Forms.TextBox();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.pbCategoryImage = new System.Windows.Forms.PictureBox();
-			this.btnClear = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbCategoryImage)).BeginInit();
@@ -58,40 +58,25 @@
 			this.panel1.Size = new System.Drawing.Size(711, 69);
 			this.panel1.TabIndex = 0;
 			// 
-			// tbPath
+			// btnClear
 			// 
-			this.tbPath.Location = new System.Drawing.Point(12, 12);
-			this.tbPath.Name = "tbPath";
-			this.tbPath.ReadOnly = true;
-			this.tbPath.Size = new System.Drawing.Size(606, 20);
-			this.tbPath.TabIndex = 0;
+			this.btnClear.Location = new System.Drawing.Point(624, 35);
+			this.btnClear.Name = "btnClear";
+			this.btnClear.Size = new System.Drawing.Size(75, 23);
+			this.btnClear.TabIndex = 7;
+			this.btnClear.Text = "Clear";
+			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
-			// btnBrowse
+			// btnSet
 			// 
-			this.btnBrowse.Location = new System.Drawing.Point(624, 10);
-			this.btnBrowse.Name = "btnBrowse";
-			this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-			this.btnBrowse.TabIndex = 1;
-			this.btnBrowse.Text = "Browse";
-			this.btnBrowse.UseVisualStyleBackColor = true;
-			this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-			// 
-			// lblCategory
-			// 
-			this.lblCategory.AutoSize = true;
-			this.lblCategory.Location = new System.Drawing.Point(12, 40);
-			this.lblCategory.Name = "lblCategory";
-			this.lblCategory.Size = new System.Drawing.Size(63, 13);
-			this.lblCategory.TabIndex = 3;
-			this.lblCategory.Text = "Категория:";
-			// 
-			// cbCategories
-			// 
-			this.cbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbCategories.Location = new System.Drawing.Point(81, 37);
-			this.cbCategories.Name = "cbCategories";
-			this.cbCategories.Size = new System.Drawing.Size(375, 21);
-			this.cbCategories.TabIndex = 4;
+			this.btnSet.Location = new System.Drawing.Point(543, 35);
+			this.btnSet.Name = "btnSet";
+			this.btnSet.Size = new System.Drawing.Size(75, 23);
+			this.btnSet.TabIndex = 6;
+			this.btnSet.Text = "Set img";
+			this.btnSet.UseVisualStyleBackColor = true;
+			this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
 			// 
 			// btnGet
 			// 
@@ -103,15 +88,40 @@
 			this.btnGet.UseVisualStyleBackColor = true;
 			this.btnGet.Click += new System.EventHandler(this.btnGet_Click);
 			// 
-			// btnSet
+			// cbCategories
 			// 
-			this.btnSet.Location = new System.Drawing.Point(543, 35);
-			this.btnSet.Name = "btnSet";
-			this.btnSet.Size = new System.Drawing.Size(75, 23);
-			this.btnSet.TabIndex = 6;
-			this.btnSet.Text = "Set img";
-			this.btnSet.UseVisualStyleBackColor = true;
-			this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+			this.cbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbCategories.Location = new System.Drawing.Point(81, 37);
+			this.cbCategories.Name = "cbCategories";
+			this.cbCategories.Size = new System.Drawing.Size(375, 21);
+			this.cbCategories.TabIndex = 4;
+			// 
+			// lblCategory
+			// 
+			this.lblCategory.AutoSize = true;
+			this.lblCategory.Location = new System.Drawing.Point(12, 40);
+			this.lblCategory.Name = "lblCategory";
+			this.lblCategory.Size = new System.Drawing.Size(63, 13);
+			this.lblCategory.TabIndex = 3;
+			this.lblCategory.Text = "Категория:";
+			// 
+			// btnBrowse
+			// 
+			this.btnBrowse.Location = new System.Drawing.Point(624, 10);
+			this.btnBrowse.Name = "btnBrowse";
+			this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+			this.btnBrowse.TabIndex = 1;
+			this.btnBrowse.Text = "Browse";
+			this.btnBrowse.UseVisualStyleBackColor = true;
+			this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+			// 
+			// tbPath
+			// 
+			this.tbPath.Location = new System.Drawing.Point(12, 12);
+			this.tbPath.Name = "tbPath";
+			this.tbPath.ReadOnly = true;
+			this.tbPath.Size = new System.Drawing.Size(606, 20);
+			this.tbPath.TabIndex = 0;
 			// 
 			// panel2
 			// 
@@ -128,20 +138,11 @@
 			this.pbCategoryImage.Location = new System.Drawing.Point(0, 0);
 			this.pbCategoryImage.Name = "pbCategoryImage";
 			this.pbCategoryImage.Size = new System.Drawing.Size(711, 422);
+			this.pbCategoryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pbCategoryImage.TabIndex = 0;
 			this.pbCategoryImage.TabStop = false;
 			// 
-			// btnClear
-			// 
-			this.btnClear.Location = new System.Drawing.Point(624, 35);
-			this.btnClear.Name = "btnClear";
-			this.btnClear.Size = new System.Drawing.Size(75, 23);
-			this.btnClear.TabIndex = 7;
-			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
-			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-			// 
-			// Form1
+			// CategoriesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,7 +152,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "Form1";
+			this.Name = "CategoriesForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Images for categories";

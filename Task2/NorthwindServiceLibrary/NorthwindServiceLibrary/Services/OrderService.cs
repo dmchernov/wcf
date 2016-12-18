@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.ServiceModel;
-using System.Threading.Tasks;
 using NorthwindModel;
 using NorthwindModel.Enums;
 using NorthwindModel.Extensions;

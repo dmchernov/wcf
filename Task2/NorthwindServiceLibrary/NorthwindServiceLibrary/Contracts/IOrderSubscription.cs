@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 
 namespace NorthwindServiceLibrary.Contracts
 {
 	public interface IOrderSubscription
 	{
 		[OperationContract(IsOneWay = true)]
+		// ReSharper disable once OperationContractWithoutServiceContract
 		void SendInformationMessage(string message);
 	}
 }

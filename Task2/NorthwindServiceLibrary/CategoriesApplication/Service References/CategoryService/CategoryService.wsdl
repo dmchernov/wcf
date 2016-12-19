@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CategoryService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="NetHttpBinding_ICategoryService_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/CategoryService?xsd=xsd1" namespace="http://tempuri.org/" />
@@ -54,55 +46,51 @@
       <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetCategoriesResponse" message="tns:ICategoryService_GetCategories_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetHttpBinding_ICategoryService" type="tns:ICategoryService">
-    <wsp:PolicyReference URI="#NetHttpBinding_ICategoryService_policy" />
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  <wsdl:binding name="BasicHttpBinding_ICategoryService" type="tns:ICategoryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetCategoryImage">
-      <soap12:operation soapAction="http://tempuri.org/ICategoryService/GetCategoryImage" style="document" />
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/GetCategoryImage" style="document" />
       <wsdl:input name="CategoryImage">
-        <soap12:header message="tns:CategoryImage_Headers" part="CategoryId" use="literal" />
-        <soap12:header message="tns:CategoryImage_Headers" part="Size" use="literal" />
-        <soap12:body use="literal" />
+        <soap:header message="tns:CategoryImage_Headers" part="CategoryId" use="literal" />
+        <soap:header message="tns:CategoryImage_Headers" part="Size" use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output name="CategoryImage">
-        <soap12:header message="tns:CategoryImage_Headers" part="CategoryId" use="literal" />
-        <soap12:header message="tns:CategoryImage_Headers" part="Size" use="literal" />
-        <soap12:body use="literal" />
+        <soap:header message="tns:CategoryImage_Headers" part="CategoryId" use="literal" />
+        <soap:header message="tns:CategoryImage_Headers" part="Size" use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="CategoryFaultFault">
-        <soap12:fault use="literal" name="CategoryFaultFault" namespace="" />
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="SetCategoryImage">
-      <soap12:operation soapAction="http://tempuri.org/ICategoryService/SetCategoryImage" style="document" />
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/SetCategoryImage" style="document" />
       <wsdl:input name="CategoryImage">
-        <soap12:header message="tns:CategoryImage_Headers" part="CategoryId" use="literal" />
-        <soap12:header message="tns:CategoryImage_Headers" part="Size" use="literal" />
-        <soap12:body use="literal" />
+        <soap:header message="tns:CategoryImage_Headers" part="CategoryId" use="literal" />
+        <soap:header message="tns:CategoryImage_Headers" part="Size" use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="CategoryFaultFault">
-        <soap12:fault use="literal" name="CategoryFaultFault" namespace="" />
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetCategories">
-      <soap12:operation soapAction="http://tempuri.org/ICategoryService/GetCategories" style="document" />
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/GetCategories" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CategoryService">
-    <wsdl:port name="NetHttpBinding_ICategoryService" binding="tns:NetHttpBinding_ICategoryService">
-      <soap12:address location="http://localhost/CategoryService" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>http://localhost/CategoryService</wsa10:Address>
-      </wsa10:EndpointReference>
+    <wsdl:port name="BasicHttpBinding_ICategoryService" binding="tns:BasicHttpBinding_ICategoryService">
+      <soap:address location="http://localhost/CategoryService" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

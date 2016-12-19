@@ -65,7 +65,6 @@
     <Compile Include="Faults\CategoryFault.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\OrderService.cs" />
-    <Compile Include="Services\OrderSubscription.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>

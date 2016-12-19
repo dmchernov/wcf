@@ -84,7 +84,6 @@ namespace NorthwindServiceLibrary.Services
 				order.OrderDate = orderDate;
 				db.SaveChanges();
 
-				//callBacks.ForEach(subscription => subscription.SendInformationMessage($"Заказ №{orderId} принят в обработку."));
 				SendMessage($"Заказ №{orderId} принят в обработку.");
 
 				return GetOrderEx(order.OrderID);
@@ -107,11 +106,6 @@ namespace NorthwindServiceLibrary.Services
 				order.ShippedDate = shippedDate;
 				db.SaveChanges();
 
-				/*callBacks.ForEach(subscription =>
-				{
-					
-					subscription.SendInformationMessage($"Заказ №{orderId} отправлен покупателю.");
-				});*/
 				SendMessage($"Заказ №{orderId} отправлен покупателю.");
 
 				return GetOrderEx(order.OrderID);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebac6887-6a52-4209-8bb4-a004e5ca6430" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="92fcb389-138c-48fb-bb65-862dc045355a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/CategoryService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:802/service/CategoryService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="CategoryService.wsdl" MetadataType="Wsdl" ID="93d8e2b1-7da3-4cf4-b9dd-998a929be27c" SourceId="1" SourceUrl="http://localhost/CategoryService?wsdl" />
-    <MetadataFile FileName="CategoryService.xsd" MetadataType="Schema" ID="73512a6b-4e73-4a93-bf03-0076075d13e5" SourceId="1" SourceUrl="http://localhost/CategoryService?xsd=xsd3" />
-    <MetadataFile FileName="CategoryService1.xsd" MetadataType="Schema" ID="6c2e37f7-5691-4323-82d8-3093c44d7075" SourceId="1" SourceUrl="http://localhost/CategoryService?xsd=xsd2" />
-    <MetadataFile FileName="CategoryService2.xsd" MetadataType="Schema" ID="ae4d9c44-4a17-490a-bf71-e0ebf2430b93" SourceId="1" SourceUrl="http://localhost/CategoryService?xsd=xsd1" />
-    <MetadataFile FileName="CategoryService3.xsd" MetadataType="Schema" ID="f16a00f1-f617-4aff-b81a-3f98164b47be" SourceId="1" SourceUrl="http://localhost/CategoryService?xsd=xsd0" />
-    <MetadataFile FileName="CategoryService4.xsd" MetadataType="Schema" ID="8adfea76-b7d4-4010-98e1-7c52c99934e5" SourceId="1" SourceUrl="http://localhost/CategoryService?xsd=xsd5" />
-    <MetadataFile FileName="CategoryService.disco" MetadataType="Disco" ID="003091e6-068e-44b6-b064-1d4084aee4bc" SourceId="1" SourceUrl="http://localhost/CategoryService?disco" />
-    <MetadataFile FileName="CategoryService41.xsd" MetadataType="Schema" ID="941e15bf-9f53-45ee-82da-13b226c9010a" SourceId="1" SourceUrl="http://localhost/CategoryService?xsd=xsd4" />
+    <MetadataFile FileName="CategoryService.xsd" MetadataType="Schema" ID="24c84a71-836a-4ae0-9983-e7acc0364025" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CategoryService1.xsd" MetadataType="Schema" ID="236bfae8-e0e2-4a69-9bc4-8b05a10b9dc8" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?xsd=xsd5" />
+    <MetadataFile FileName="CategoryService2.xsd" MetadataType="Schema" ID="369ec90a-582f-4f10-ac29-678e83de14c5" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CategoryService3.xsd" MetadataType="Schema" ID="a8efeb9c-517f-4eab-89d1-b0149ce761f9" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CategoryService.disco" MetadataType="Disco" ID="a64aabd0-1a0a-48bc-97c2-73dc9f54229d" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?disco" />
+    <MetadataFile FileName="CategoryService4.xsd" MetadataType="Schema" ID="56456ef8-1fd7-4275-b8be-03539c9cb898" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CategoryService.wsdl" MetadataType="Wsdl" ID="f89e4e50-2bc2-4ebb-a2f6-de3b8238e968" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?wsdl" />
+    <MetadataFile FileName="CategoryService5.xsd" MetadataType="Schema" ID="ec80d017-9c84-4078-9185-ba2205fe6587" SourceId="1" SourceUrl="http://home-d:802/service/CategoryService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

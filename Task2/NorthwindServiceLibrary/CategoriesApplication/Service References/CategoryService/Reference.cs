@@ -15,7 +15,7 @@ namespace CategoriesApplication.CategoryService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Services")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
     [System.SerializableAttribute()]
     public partial class CategoryFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -165,7 +165,7 @@ namespace CategoriesApplication.CategoryService {
         
         // CODEGEN: Контракт генерации сообщений с именем упаковщика (CategoryImage) сообщения CategoryImage не соответствует значению по умолчанию (GetCategoryImage).
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetCategoryImage", ReplyAction="http://tempuri.org/ICategoryService/GetCategoryImageResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(CategoriesApplication.CategoryService.CategoryFault), Action="http://tempuri.org/ICategoryService/GetCategoryImageCategoryFaultFault", Name="CategoryFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Services")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CategoriesApplication.CategoryService.CategoryFault), Action="http://tempuri.org/ICategoryService/GetCategoryImageCategoryFaultFault", Name="CategoryFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
         CategoriesApplication.CategoryService.CategoryImage GetCategoryImage(CategoriesApplication.CategoryService.CategoryImage request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/GetCategoryImage", ReplyAction="http://tempuri.org/ICategoryService/GetCategoryImageResponse")]
@@ -173,7 +173,7 @@ namespace CategoriesApplication.CategoryService {
         
         // CODEGEN: Контракт генерации сообщений с операцией SetCategoryImage не является ни RPC, ни упакованным документом.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/SetCategoryImage", ReplyAction="http://tempuri.org/ICategoryService/SetCategoryImageResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(CategoriesApplication.CategoryService.CategoryFault), Action="http://tempuri.org/ICategoryService/SetCategoryImageCategoryFaultFault", Name="CategoryFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Services")]
+        [System.ServiceModel.FaultContractAttribute(typeof(CategoriesApplication.CategoryService.CategoryFault), Action="http://tempuri.org/ICategoryService/SetCategoryImageCategoryFaultFault", Name="CategoryFault", Namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults")]
         CategoriesApplication.CategoryService.SetCategoryImageResponse SetCategoryImage(CategoriesApplication.CategoryService.CategoryImage request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryService/SetCategoryImage", ReplyAction="http://tempuri.org/ICategoryService/SetCategoryImageResponse")]

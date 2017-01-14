@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetHttpBinding_IOrderService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IOrderService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" />
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models" />
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" />
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" />
+      <xsd:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Subscription" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOrderService_GetOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrders" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrderEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderEx" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrderEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrderEx_OrderNotFoundFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q1:OrderNotFound" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendOrderToProcess" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendOrderToProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToProcess_OrderNotFoundFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q2:OrderNotFound" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToProcess_OrderNotInRequiredStatusesFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q3:OrderNotInRequiredStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToProcess_InvalidOrderDateFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q4:InvalidOrderDate" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendOrderToCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendOrderToCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToCustomer_OrderNotFoundFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q5:OrderNotFound" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderToCustomer_OrderNotInRequiredStatusesFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q6:OrderNotInRequiredStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_OrderNotFoundFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q7:OrderNotFound" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateOrder_OrderNotInRequiredStatusesFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q8:OrderNotInRequiredStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_OrderNotFoundFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q9:OrderNotFound" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteOrder_OrderNotInRequiredStatusesFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" name="detail" element="q10:OrderNotInRequiredStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Subscribe_InputMessage">
+    <wsdl:part name="parameters" element="tns:Subscribe" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UnSubscribe_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnSubscribe" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendOrderNotification_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendOrderNotification" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_SendServiceData_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendServiceData" />
+  </wsdl:message>
+  <wsdl:portType name="IOrderService">
+    <wsdl:operation name="GetOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrders" message="tns:IOrderService_GetOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrdersResponse" message="tns:IOrderService_GetOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderEx">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrderEx" message="tns:IOrderService_GetOrderEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrderExResponse" message="tns:IOrderService_GetOrderEx_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetOrderExOrderNotFoundFault" name="OrderNotFoundFault" message="tns:IOrderService_GetOrderEx_OrderNotFoundFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Add" message="tns:IOrderService_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AddResponse" message="tns:IOrderService_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderToProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcess" message="tns:IOrderService_SendOrderToProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcessResponse" message="tns:IOrderService_SendOrderToProcess_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcessOrderNotFoundFault" name="OrderNotFoundFault" message="tns:IOrderService_SendOrderToProcess_OrderNotFoundFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcessOrderNotInRequiredStatusesFault" name="OrderNotInRequiredStatusesFault" message="tns:IOrderService_SendOrderToProcess_OrderNotInRequiredStatusesFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToProcessInvalidOrderDateFault" name="InvalidOrderDateFault" message="tns:IOrderService_SendOrderToProcess_InvalidOrderDateFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderToCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomer" message="tns:IOrderService_SendOrderToCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomerResponse" message="tns:IOrderService_SendOrderToCustomer_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomerOrderNotFoundFault" name="OrderNotFoundFault" message="tns:IOrderService_SendOrderToCustomer_OrderNotFoundFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/SendOrderToCustomerOrderNotInRequiredStatusesFault" name="OrderNotInRequiredStatusesFault" message="tns:IOrderService_SendOrderToCustomer_OrderNotInRequiredStatusesFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateOrder" message="tns:IOrderService_UpdateOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdateOrderResponse" message="tns:IOrderService_UpdateOrder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/UpdateOrderOrderNotFoundFault" name="OrderNotFoundFault" message="tns:IOrderService_UpdateOrder_OrderNotFoundFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/UpdateOrderOrderNotInRequiredStatusesFault" name="OrderNotInRequiredStatusesFault" message="tns:IOrderService_UpdateOrder_OrderNotInRequiredStatusesFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteOrder" message="tns:IOrderService_DeleteOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderResponse" message="tns:IOrderService_DeleteOrder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderOrderNotFoundFault" name="OrderNotFoundFault" message="tns:IOrderService_DeleteOrder_OrderNotFoundFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderOrderNotInRequiredStatusesFault" name="OrderNotInRequiredStatusesFault" message="tns:IOrderService_DeleteOrder_OrderNotInRequiredStatusesFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Subscribe" message="tns:IOrderService_Subscribe_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UnSubscribe" message="tns:IOrderService_UnSubscribe_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderNotification">
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendOrderNotification" message="tns:IOrderService_SendOrderNotification_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendServiceData">
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/SendServiceData" message="tns:IOrderService_SendServiceData_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetHttpBinding_IOrderService" type="tns:IOrderService">
+    <wsp:PolicyReference URI="#NetHttpBinding_IOrderService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
+    <wsdl:operation name="GetOrders">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/GetOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderEx">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/GetOrderEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderToProcess">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendOrderToProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidOrderDateFault">
+        <soap12:fault use="literal" name="InvalidOrderDateFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderToCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendOrderToCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/UpdateOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/DeleteOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/Subscribe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribe">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/UnSubscribe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderNotification">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendOrderNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendServiceData">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendServiceData" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IOrderService" type="tns:IOrderService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IOrderService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetOrders">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/GetOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderEx">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/GetOrderEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderToProcess">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendOrderToProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidOrderDateFault">
+        <soap12:fault use="literal" name="InvalidOrderDateFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderToCustomer">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendOrderToCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/UpdateOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrder">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/DeleteOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="OrderNotFoundFault">
+        <soap12:fault use="literal" name="OrderNotFoundFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="OrderNotInRequiredStatusesFault">
+        <soap12:fault use="literal" name="OrderNotInRequiredStatusesFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/Subscribe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribe">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/UnSubscribe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderNotification">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendOrderNotification" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendServiceData">
+      <soap12:operation soapAction="http://tempuri.org/IOrderService/SendServiceData" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderService">
+    <wsdl:port name="NetHttpBinding_IOrderService" binding="tns:NetHttpBinding_IOrderService">
+      <soap12:address location="ws://localhost:809/winsvc/northwind/orders" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>ws://localhost:809/winsvc/northwind/orders</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IOrderService" binding="tns:NetTcpBinding_IOrderService">
+      <soap12:address location="net.tcp://localhost:15432/winsvc/northwind/orders" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:15432/winsvc/northwind/orders</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/Home-D</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

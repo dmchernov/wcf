@@ -6,6 +6,7 @@ using NorthwindModel;
 using NorthwindModel.Extensions;
 using NorthwindModel.Models.CustomModels;
 using NorthwindServiceLibrary.Contracts;
+using NorthwindServiceLibrary.Faults;
 
 namespace NorthwindServiceLibrary.Services
 {

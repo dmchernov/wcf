@@ -2,7 +2,7 @@
 using System.IO;
 using System.ServiceModel;
 using NorthwindModel.Models.CustomModels;
-using NorthwindServiceLibrary.Services;
+using NorthwindServiceLibrary.Faults;
 
 namespace NorthwindServiceLibrary.Contracts
 {

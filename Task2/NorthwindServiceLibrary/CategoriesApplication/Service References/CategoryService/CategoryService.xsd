@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Services" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CategoryFault">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
-      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CategoryFault" nillable="true" type="tns:CategoryFault" />
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://home-d:802/service/CategoryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://home-d:802/service/CategoryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" />
+  <xs:element name="CategoryImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/Message" name="ImageStream" type="q1:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryId" type="xs:int" />
+  <xs:element name="Size" type="xs:int" />
+  <xs:element name="GetCategories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q2:ArrayOfBasicCategory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

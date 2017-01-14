@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a8c75af8-0d24-407f-b0b7-ba76416b4df7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:809/winsvc/northwind/orders" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="orders.xsd" MetadataType="Schema" ID="61591e52-2a67-4191-aa8f-d50a123ec6de" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd0" />
+    <MetadataFile FileName="orders1.xsd" MetadataType="Schema" ID="570aaf66-a1f8-4a89-8f82-9b9fd46f8a81" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd1" />
+    <MetadataFile FileName="orders2.xsd" MetadataType="Schema" ID="d7cbbb62-be9b-4cdb-ae44-446f4040f5d5" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd2" />
+    <MetadataFile FileName="orders3.xsd" MetadataType="Schema" ID="dbc69f99-8c41-4685-ae67-f4543835300a" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd3" />
+    <MetadataFile FileName="orders4.xsd" MetadataType="Schema" ID="a1e7f446-3f6f-4f06-bf2c-35e318e5cab3" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd4" />
+    <MetadataFile FileName="orders5.xsd" MetadataType="Schema" ID="9d0978b2-922a-4438-88d4-7c56ade84a51" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd5" />
+    <MetadataFile FileName="orders6.xsd" MetadataType="Schema" ID="1df142c3-cbd6-4cda-a6b5-be2c12b439dd" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?xsd=xsd6" />
+    <MetadataFile FileName="OrderService.wsdl" MetadataType="Wsdl" ID="edcf95b9-5caa-4ff9-bb88-de1b421f57e5" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?wsdl" />
+    <MetadataFile FileName="orders.disco" MetadataType="Disco" ID="0c70ce6a-d610-436d-99a3-d2aa80d0b231" SourceId="1" SourceUrl="http://localhost:809/winsvc/northwind/orders?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

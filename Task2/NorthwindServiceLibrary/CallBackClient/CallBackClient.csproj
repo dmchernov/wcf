@@ -53,16 +53,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="SubscribeFormForm.cs">
+    <Compile Include="SubscribeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubscribeFormForm.Designer.cs">
-      <DependentUpon>SubscribeFormForm.cs</DependentUpon>
+    <Compile Include="SubscribeForm.Designer.cs">
+      <DependentUpon>SubscribeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="SubscribeFormForm.resx">
-      <DependentUpon>SubscribeFormForm.cs</DependentUpon>
+    <EmbeddedResource Include="SubscribeForm.resx">
+      <DependentUpon>SubscribeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

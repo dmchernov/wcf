@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/CategoryService?xsd=xsd0" namespace="http://schemas.microsoft.com/Message" />
-  <xs:import schemaLocation="http://localhost/CategoryService?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" />
-  <xs:element name="CategoryImage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.microsoft.com/Message" name="ImageStream" type="q1:StreamBody" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CategoryId" type="xs:int" />
-  <xs:element name="Size" type="xs:int" />
-  <xs:element name="GetCategories">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCategoriesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q2:ArrayOfBasicCategory" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Models.CustomModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfBasicCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BasicCategory" nillable="true" type="tns:BasicCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBasicCategory" nillable="true" type="tns:ArrayOfBasicCategory" />
+  <xs:complexType name="BasicCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasicCategory" nillable="true" type="tns:BasicCategory" />
 </xs:schema>

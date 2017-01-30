@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NorthwindServiceLibrary.Faults.OrderFaults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:809/winsvc/northwind/orders?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" />
+  <xs:complexType name="OrderNotFound">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OrderFault">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderNotFound" nillable="true" type="tns:OrderNotFound" />
+  <xs:complexType name="OrderFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderFault" nillable="true" type="tns:OrderFault" />
+  <xs:complexType name="OrderNotInRequiredStatuses">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OrderFault">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/NorthwindModel.Enums" minOccurs="0" name="RequiredStatuses" nillable="true" type="q1:ArrayOfOrderStatus" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderNotInRequiredStatuses" nillable="true" type="tns:OrderNotInRequiredStatuses" />
+  <xs:complexType name="InvalidOrderDate">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OrderFault">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvalidOrderDate" nillable="true" type="tns:InvalidOrderDate" />
+</xs:schema>

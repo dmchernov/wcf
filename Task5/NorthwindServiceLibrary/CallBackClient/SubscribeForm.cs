@@ -1,17 +1,21 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows.Forms;
-using CallBackClient.OrderService;
+using NorthwindService.Contracts.ServiceContracts;
+using NorthwindService.Contracts.Subscription;
 
 namespace CallBackClient
 {
-	public partial class SubscribeForm : Form, IOrderServiceCallback
+	public partial class SubscribeForm : Form, IOrderSubscription
 	{
-		private readonly OrderServiceClient _service;
+		private readonly DuplexChannelFactory<IOrderChannelService> _factory;
+		private IOrderChannelService _service;
 		public SubscribeForm ()
 		{
 			InitializeComponent();
-			_service = new OrderServiceClient(new InstanceContext(this));
+			//_service = new OrderServiceClient(new InstanceContext(this));
+			_factory = new DuplexChannelFactory<IOrderChannelService>(new InstanceContext(this), "orderHttp");
+			_service = _factory.CreateChannel();
 		}
 
 		private void btnSubscribe_Click (object sender, EventArgs e)
@@ -20,9 +24,11 @@ namespace CallBackClient
 			{
 				_service.Subscribe();
 			}
-			catch
+			catch (Exception ex)
 			{
 				MessageBox.Show(@"Ошибка взаимодействия с сервисом");
+				_service.Abort();
+				_service = _factory.CreateChannel();
 			}
 		}
 
@@ -35,6 +41,8 @@ namespace CallBackClient
 			catch
 			{
 				MessageBox.Show(@"Ошибка взаимодействия с сервисом");
+				_service.Abort();
+				_service = _factory.CreateChannel();
 			}
 		}
 

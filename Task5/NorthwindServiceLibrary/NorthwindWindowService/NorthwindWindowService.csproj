@@ -74,6 +74,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\NorthwindService.Contracts\NorthwindService.Contracts.csproj">
+      <Project>{9b709518-4f3a-4d6c-88ee-b14c71a5cf52}</Project>
+      <Name>NorthwindService.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NorthwindServiceFactories\NorthwindServiceFactories.csproj">
       <Project>{a0951998-195c-4787-bd59-1f3f2afc84d9}</Project>
       <Name>NorthwindServiceFactories</Name>

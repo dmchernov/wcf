@@ -26,10 +26,13 @@ namespace NorthwindServiceLibrary.Services
 				db.Configuration.LazyLoadingEnabled = false;
 				var orders = db.Orders.ToBasicOrdersList();
 
-				throw new Exception("Test exception");
-
 				return orders;
 			}
+		}
+
+		public IList<BasicOrder> GetOrdersWithError ()
+		{
+			throw new Exception("Test exception");
 		}
 
 		public Order GetOrderEx (int orderId)

@@ -1,5 +1,5 @@
-﻿using System;
-using System.ServiceModel;
+﻿using System.ServiceModel;
+using System.Threading;
 using NorthwindServiceLibrary.Services;
 using Topshelf;
 
@@ -22,50 +22,63 @@ namespace NorthwindWindowService
 		private ServiceHost _categoriesHost = new ServiceHost(typeof(CategoryService));
 		#endregion
 
-		public bool Start(HostControl hostControl)
+		public bool Start (HostControl hostControl)
 		{
 			#region Настройка из кода
 			//_ordersHost = ServiceHostHelper.ConfigureServiceHost(_ordersHost, ContractDescription.GetContract(typeof(IOrderService)), String.Empty);
 			//_productsHost = ServiceHostHelper.ConfigureServiceHost(_productsHost, ContractDescription.GetContract(typeof(IProductService)), String.Empty);
 			//_categoriesHost = ServiceHostHelper.ConfigureServiceHost(_categoriesHost, ContractDescription.GetContract(typeof(ICategoryService)), String.Empty, true);
 			#endregion
-			_ordersHost.BeginOpen(OnOpen, _ordersHost);
-			_productsHost.BeginOpen(OnOpen, _productsHost);
-			_categoriesHost.BeginOpen(OnOpen, _categoriesHost);
-			
-			/*while (_ordersHost.State != CommunicationState.Opened && _categoriesHost.State != CommunicationState.Opened && _productsHost.State != CommunicationState.Opened)
+			var ordersResetEvent = new ManualResetEvent(false);
+			var catResetEvent = new ManualResetEvent(false);
+			var prodResetEvent = new ManualResetEvent(false);
+
+			_ordersHost.BeginOpen(ar =>
 			{
-				Thread.Sleep(100);
-			}*/
+				_ordersHost.EndOpen(ar);
+				ordersResetEvent.Set();
+			}, null);
+			_productsHost.BeginOpen(ar =>
+			{
+				_productsHost.EndOpen(ar);
+				prodResetEvent.Set();
+			}, null);
+			_categoriesHost.BeginOpen(ar =>
+			{
+				_categoriesHost.EndOpen(ar);
+				catResetEvent.Set();
+			}, null);
+
+			WaitHandle.WaitAll(new WaitHandle[] { ordersResetEvent, catResetEvent, prodResetEvent });
 
 			return true;
 		}
 
-		public bool Stop(HostControl hostControl)
+		public bool Stop (HostControl hostControl)
 		{
-			_ordersHost.BeginClose(OnClose, _ordersHost);
-			_productsHost.BeginClose(OnClose, _productsHost);
-			_categoriesHost.BeginClose(OnClose, _categoriesHost);
+			var ordersResetEvent = new ManualResetEvent(false);
+			var catResetEvent = new ManualResetEvent(false);
+			var prodResetEvent = new ManualResetEvent(false);
 
-			/*while (_ordersHost.State != CommunicationState.Closed && _categoriesHost.State != CommunicationState.Closed && _productsHost.State != CommunicationState.Closed)
+			_ordersHost.BeginClose(ar =>
 			{
-				Thread.Sleep(100);
-			}*/
+				_ordersHost.EndClose(ar);
+				ordersResetEvent.Set();
+			}, null);
+			_productsHost.BeginClose(ar =>
+			{
+				_productsHost.EndClose(ar);
+				prodResetEvent.Set();
+			}, null);
+			_categoriesHost.BeginClose(ar =>
+			{
+				_categoriesHost.EndClose(ar);
+				catResetEvent.Set();
+			}, null);
+
+			WaitHandle.WaitAll(new WaitHandle[] { ordersResetEvent, catResetEvent, prodResetEvent });
 
 			return true;
-		}
-
-		private void OnOpen(IAsyncResult result)
-		{
-			ServiceHost service = (ServiceHost)result.AsyncState;
-			service.EndOpen(result);
-		}
-
-		private void OnClose (IAsyncResult result)
-		{
-			ServiceHost service = (ServiceHost)result.AsyncState;
-			service.EndClose(result);
-			((IDisposable)service).Dispose();
 		}
 	}
 }

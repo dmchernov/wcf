@@ -9,10 +9,10 @@ namespace CategoriesApplication
 {
 	public partial class CategoriesForm : Form
 	{
-		private ChannelFactory<ICategoryCommunicationService> _factory;
+		private ChannelFactory<ICategoryChannelService> _factory;
 		public CategoriesForm ()
 		{
-			_factory = new ChannelFactory<ICategoryCommunicationService>("http");
+			_factory = new ChannelFactory<ICategoryChannelService>("http");
 			InitializeComponent();
 			InitComboBox();
 		}

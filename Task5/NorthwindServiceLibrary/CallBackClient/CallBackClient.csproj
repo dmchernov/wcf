@@ -48,11 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service References\OrderService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="IOrderChannelService.cs" />
     <Compile Include="SubscribeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,58 +78,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\OrderService\CallBackClient.OrderService.BasicOrder.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\OrderService\CallBackClient.OrderService.Order.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\OrderService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\orders.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\orders1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\orders2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\orders3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\orders4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\orders5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\orders6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\OrderService.wsdl" />
-    <None Include="Service References\OrderService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\orders.disco" />
+    <ProjectReference Include="..\NorthwindModel\NorthwindModel.csproj">
+      <Project>{0FE1D98E-9D97-466C-8E3D-95FEEA6EA6F5}</Project>
+      <Name>NorthwindModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NorthwindService.Contracts\NorthwindService.Contracts.csproj">
+      <Project>{9b709518-4f3a-4d6c-88ee-b14c71a5cf52}</Project>
+      <Name>NorthwindService.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

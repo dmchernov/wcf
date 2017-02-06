@@ -3,7 +3,7 @@ using NorthwindService.Contracts.ServiceContracts;
 
 namespace CategoriesApplication
 {
-	interface ICategoryCommunicationService : ICategoryService, IClientChannel
+	interface ICategoryChannelService : ICategoryService, IClientChannel
 	{
 	}
 }

@@ -57,6 +57,7 @@
     <Compile Include="Common\OrdersHelper.cs" />
     <Compile Include="Contracts\IProductChannelService.cs" />
     <Compile Include="Contracts\IOrderChannelService.cs" />
+    <Compile Include="MetaDataTests\MetaDataAvailabilityTests.cs" />
     <Compile Include="OrderServiceTests\OrderFaultTest.cs" />
     <Compile Include="OrderServiceTests\OrderServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

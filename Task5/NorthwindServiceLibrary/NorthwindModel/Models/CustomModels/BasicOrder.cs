@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 namespace NorthwindModel.Models.CustomModels
 {
 	[DataContract]
-	[KnownType(typeof(Order))]
 	public class BasicOrder
 	{
 		[DataMember]

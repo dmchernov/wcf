@@ -31,10 +31,30 @@ namespace TestProject.OrderServiceTests
 				}
 			}
 		}
-
+		
 		//TODO: Тест, демонстрирующий обработку Unhandled exception
 		[Test]
-		public void GetOrderExWithExceptionTest ()
+		public void GetOrdersWithExceptionTest ()
+		{
+			using (var service = ChannelFactoryHelper.GetOrdersFactory(new InstanceContext(this)).CreateChannel())
+			{
+				try
+				{
+					foreach (var order in service.GetOrdersWithError())
+					{
+						Console.WriteLine(order.OrderID);
+					}
+				}
+				catch
+				{
+					if (service.State == CommunicationState.Faulted)
+						service.Abort();
+				}
+			}
+		}
+
+		[Test]
+		public void GetOrderEx ()
 		{
 			Order fullOrderData = null;
 			var service = ChannelFactoryHelper.GetOrdersFactory(new InstanceContext(this)).CreateChannel();
@@ -46,14 +66,13 @@ namespace TestProject.OrderServiceTests
 			}
 			catch
 			{
-				//TODO: Соединение закрывается
 				if (service.State == CommunicationState.Faulted)
 					service.Abort();
 			}
 
 			service.Close();
 
-			Assert.Null(fullOrderData);
+			Assert.NotNull(fullOrderData);
 		}
 
 		[Test]

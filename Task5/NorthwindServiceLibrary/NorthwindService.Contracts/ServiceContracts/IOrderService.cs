@@ -15,6 +15,9 @@ namespace NorthwindService.Contracts.ServiceContracts
 		IList<BasicOrder> GetOrders ();
 
 		[OperationContract]
+		IList<BasicOrder> GetOrdersWithError ();
+
+		[OperationContract]
 		[FaultContract(typeof(OrderNotFound))]
 		Order GetOrderEx (int orderId);
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows.Forms;
-using NorthwindService.Contracts.ServiceContracts;
 using NorthwindService.Contracts.Subscription;
 
 namespace CallBackClient
@@ -16,6 +15,21 @@ namespace CallBackClient
 			//_service = new OrderServiceClient(new InstanceContext(this));
 			_factory = new DuplexChannelFactory<IOrderChannelService>(new InstanceContext(this), "orderHttp");
 			_service = _factory.CreateChannel();
+
+			Closed += OnClosed;
+		}
+
+		private void OnClosed(object sender, EventArgs eventArgs)
+		{
+			if (_service?.State == CommunicationState.Faulted)
+				_service?.Abort();
+			else
+				_service?.Close();
+
+			if (_factory?.State == CommunicationState.Faulted)
+				_factory?.Abort();
+			else
+				_factory?.Close();
 		}
 
 		private void btnSubscribe_Click (object sender, EventArgs e)
@@ -24,7 +38,7 @@ namespace CallBackClient
 			{
 				_service.Subscribe();
 			}
-			catch (Exception ex)
+			catch
 			{
 				MessageBox.Show(@"Ошибка взаимодействия с сервисом");
 				_service.Abort();

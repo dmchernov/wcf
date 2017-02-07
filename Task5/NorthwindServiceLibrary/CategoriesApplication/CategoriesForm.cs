@@ -9,12 +9,22 @@ namespace CategoriesApplication
 {
 	public partial class CategoriesForm : Form
 	{
-		private ChannelFactory<ICategoryChannelService> _factory;
+		private readonly ChannelFactory<ICategoryChannelService> _factory;
 		public CategoriesForm ()
 		{
 			_factory = new ChannelFactory<ICategoryChannelService>("http");
 			InitializeComponent();
 			InitComboBox();
+
+			Closed += OnClosed;
+		}
+
+		private void OnClosed(object sender, EventArgs eventArgs)
+		{
+			if (_factory?.State == CommunicationState.Faulted)
+				_factory?.Abort();
+			else
+				_factory?.Close();
 		}
 
 		private void btnBrowse_Click (object sender, EventArgs e)
@@ -40,7 +50,7 @@ namespace CategoriesApplication
 				{
 					cbCategories.DataSource = service.GetCategories();
 				}
-				catch (Exception ex)
+				catch
 				{
 					if (service.State == CommunicationState.Faulted)
 						service.Abort();
@@ -52,7 +62,6 @@ namespace CategoriesApplication
 			cbCategories.DisplayMember = "CategoryName";
 		}
 		
-		//TODO метод, где не получается сохранить изображение из БД
 		private void btnGet_Click (object sender, EventArgs e)
 		{
 			Stream stream = new MemoryStream();
@@ -138,7 +147,7 @@ namespace CategoriesApplication
 					{
 						service.SetCategoryImage(image);
 					}
-					catch (Exception ex)
+					catch
 					{
 						MessageBox.Show(@"Изображение не отправлено.");
 						if (service.State == CommunicationState.Faulted)

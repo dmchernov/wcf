@@ -78,9 +78,10 @@ namespace TestProject.MetaDataTests
 				var factory = new DuplexChannelFactory<IOrderService>(new InstanceContext(this), endpoint.Binding, endpoint.Address);
 				var service = factory.CreateChannel(endpoint.Address);
 
-				var orderId = service.GetOrders().First().OrderID;
-
-				OrdersHelper.PrintFullOrderInfo(service.GetOrderEx(orderId));
+				var orderId = service?.GetOrders().First().OrderID;
+				var order = service?.GetOrderEx(orderId.GetValueOrDefault());
+				Assert.NotNull(order);
+				OrdersHelper.PrintFullOrderInfo(order);
 				
 			}
 		}

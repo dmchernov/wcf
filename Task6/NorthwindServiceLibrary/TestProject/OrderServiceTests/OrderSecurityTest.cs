@@ -40,7 +40,7 @@ namespace TestProject.OrderServiceTests
 		{
 			using (var service = ChannelFactoryHelper.GetOrdersFactoryForSecurityTests(new InstanceContext(this), "Operator1", "1234567890").CreateChannel())
 			{
-				service.GetOrders();
+				Assert.Catch<CommunicationException>(() => service.GetOrders());
 				if (service.State == CommunicationState.Faulted)
 					service.Abort();
 			}

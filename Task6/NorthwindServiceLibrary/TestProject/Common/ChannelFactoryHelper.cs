@@ -28,7 +28,7 @@ namespace TestProject.Common
 		{
 			if (_ordersFactory == null || _ordersFactory.State != CommunicationState.Faulted)
 			{
-				_ordersFactory = new DuplexChannelFactory<IOrderChannelService>(context, "ordersTcpIis");
+				_ordersFactory = new DuplexChannelFactory<IOrderChannelService>(context, "ordersNetHttpIis");
 				SetCredential(_ordersFactory, role);
 			}
 
@@ -40,7 +40,7 @@ namespace TestProject.Common
 		{
 			if (_ordersFactoryForSecurityTests == null || _ordersFactoryForSecurityTests.State != CommunicationState.Faulted)
 			{
-				_ordersFactoryForSecurityTests = new DuplexChannelFactory<IOrderChannelService>(context, "ordersHttps");
+				_ordersFactoryForSecurityTests = new DuplexChannelFactory<IOrderChannelService>(context, "ordersNetHttpIis");
 				_ordersFactoryForSecurityTests.Credentials.UserName.UserName = name;
 				_ordersFactoryForSecurityTests.Credentials.UserName.Password = password;
 			}

@@ -2,6 +2,7 @@
 using System.IdentityModel.Selectors;
 using System.IdentityModel.Tokens;
 using System.Linq;
+using System.Text;
 
 namespace NorthwindServiceLibrary.Security
 {
@@ -14,11 +15,9 @@ namespace NorthwindServiceLibrary.Security
 
 			using (var userStore = new NorthwindUsers.NorthwindUsers())
 			{
-				//1793703675 - Хэш для IIS
-				//1849190365 - Хэш для WindowsService
-				var hash = password.GetHashCode().ToString();
+				var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
 				var user = userStore.Users.SingleOrDefault(u => u.UserName == userName);
-				if (user != null && user.Password.Split('|').Contains(hash))
+				if (user != null && user.Password == base64)
 					return;
 
 				throw new SecurityTokenValidationException();

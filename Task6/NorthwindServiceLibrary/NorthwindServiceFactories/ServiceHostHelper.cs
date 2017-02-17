@@ -29,10 +29,6 @@ namespace NorthwindServiceFactories
 			var httpAddresses = host.BaseAddresses.Where(a => a.Scheme == Uri.UriSchemeHttp).ToList();
 			httpAddresses.ForEach(httpAddress =>
 			{
-				/*var netHttpBinding = new NetHttpBinding { MaxReceivedMessageSize = Int32.MaxValue, TransferMode = useStreaming ? TransferMode.Streamed : TransferMode.Buffered };
-				var netHttpEndpoint = new ServiceEndpoint(description, netHttpBinding, new EndpointAddress(new Uri(httpAddress, endpointName)));
-				host.AddServiceEndpoint(netHttpEndpoint);*/
-
 				var netHttpBinding = new WSDualHttpBinding() { MaxReceivedMessageSize = Int32.MaxValue };
 				netHttpBinding.Security.Mode = WSDualHttpSecurityMode.Message;
 				netHttpBinding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
@@ -76,18 +72,18 @@ namespace NorthwindServiceFactories
 				host.Description.Behaviors.Add(serviceCredentialsBehavior);
 			}
 
-			var serviceAuthorizationBehavior = host.Description.Behaviors.Find<ServiceAuthorizationBehavior>();
-			if (serviceAuthorizationBehavior == null)
-			{
-				serviceAuthorizationBehavior = new ServiceAuthorizationBehavior
-				{
-					PrincipalPermissionMode = PrincipalPermissionMode.Custom
-				};
-				var policies = new List<IAuthorizationPolicy> {new NorthwindServiceLibrary.Security.NorthwindAuthorizationPolicy()};
-				serviceAuthorizationBehavior.ExternalAuthorizationPolicies = policies.AsReadOnly();
+			if (host.Description.Behaviors.Find<ServiceAuthorizationBehavior>() != null)
+				host.Description.Behaviors.Remove<ServiceAuthorizationBehavior>();
 
-				host.Description.Behaviors.Add(serviceAuthorizationBehavior);
-			}
+			var serviceAuthorizationBehavior = new ServiceAuthorizationBehavior
+			{
+				PrincipalPermissionMode = PrincipalPermissionMode.Custom
+			};
+			var policies = new List<IAuthorizationPolicy> {new NorthwindServiceLibrary.Security.NorthwindAuthorizationPolicy()};
+			serviceAuthorizationBehavior.ExternalAuthorizationPolicies = policies.AsReadOnly();
+
+			host.Description.Behaviors.Add(serviceAuthorizationBehavior);
+			
 			var debug = host.Description.Behaviors.Find<ServiceDebugBehavior>();
 			if (debug == null)
 			{

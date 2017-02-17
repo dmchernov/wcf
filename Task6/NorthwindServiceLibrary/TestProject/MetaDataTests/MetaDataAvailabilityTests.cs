@@ -12,7 +12,7 @@ namespace TestProject.MetaDataTests
 {
 	public class MetaDataAvailabilityTests : IOrderSubscription
 	{
-		private static readonly Uri iisHttpOrdersAddress = new Uri("http://localhost:802/service/Orders.svc/mex");
+		private static readonly Uri iisHttpOrdersAddress = new Uri("https://localhost:803/service/Orders.svc/mex");
 		private static readonly Uri WindowsServiceHttpsOrdersAddress = new Uri("https://localhost:810/northwindwindowsservice/orders/mex");
 
 		private static readonly Uri iisTcpOrdersAddress = new Uri("net.tcp://localhost:12345/service/Orders.svc/mex");
@@ -45,7 +45,6 @@ namespace TestProject.MetaDataTests
 		private void PrintMetaDataInfo(Uri address)
 		{
 			MetadataExchangeClient metaClient = new MetadataExchangeClient(address, MetadataExchangeClientMode.MetadataExchange);
-			//metaClient.HttpCredentials = new NetworkCredential("Guest", String.Empty);
 			metaClient.SoapCredentials.UserName.UserName = "Guest";
 			metaClient.SoapCredentials.UserName.Password = String.Empty;
 			MetadataSet metadataSet = metaClient.GetMetadata();
